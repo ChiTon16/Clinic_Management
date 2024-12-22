@@ -69,7 +69,7 @@ app.add_url_rule('/about', 'about', views.about)
 app.add_url_rule('/medicine', 'medicine', views.medicine)
 app.add_url_rule('/notification', 'notification', views.notification)
 app.add_url_rule('/authentication', 'authentication', views.authentication)
-app.add_url_rule('/healthcare-staff', 'healthcare_staff', views.healthcare_staff)
+app.add_url_rule('/contact', 'contact', views.healthcare_staff)
 app.add_url_rule('/pay', 'pay', views.pay)
 
 app.add_url_rule('/authentication/signout', 'signout', views.signout)
