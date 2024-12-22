@@ -1,4 +1,4 @@
-from src import app, views, checker_loader
+from src import app, views, fetcher
 
 # from src.decorators import admin_required
 
@@ -79,6 +79,13 @@ app.add_url_rule('/authentication/forgot-password', 'forgot_password', views.for
 app.add_url_rule('/authentication/reset-with-token/<token>', 'reset_with_token', views.reset_with_token,
                  methods=['POST'])
 
+
+#--- HEADER ----#
+
+
+app.add_url_rule('/pay', 'pay', views.pay)
+
+
 app.add_url_rule('/user/appointment', 'appointment', views.appointment, methods=['GET', 'POST'])
 app.add_url_rule('/user/account-settings/<slug>', 'account_settings', views.account_settings, methods=['GET', 'POST'])
 app.add_url_rule('/user/profile-settings/<slug>', 'profile_settings', views.profile_settings, methods=['GET', 'POST'])
@@ -101,36 +108,36 @@ app.add_url_rule('/mail/confirm/<token>', 'confirm_email', views.confirm_email)
 app.add_url_rule('/mail/resend', 'resend_confirmation', views.resend_confirmation)
 app.add_url_rule('/mail/password-reset/<token>', 'password_reset', views.password_reset)
 
-app.add_url_rule('/api/employee/doctor/load-packages', 'load_packages', checker_loader.load_packages_list,
+app.add_url_rule('/api/employee/doctor/load-packages', 'load_packages', fetcher.load_packages_list,
                  methods=['POST'])
-app.add_url_rule('/api/employee/doctor/load-medicine', 'load_medicine', checker_loader.load_medicines_list,
+app.add_url_rule('/api/employee/doctor/load-medicine', 'load_medicine', fetcher.load_medicines_list,
                  methods=['POST'])
-app.add_url_rule('/api/authentication/check-signin-infor', 'check_signin_infor', checker_loader.check_signin_infor,
+app.add_url_rule('/api/authentication/check-signin-infor', 'check_signin_infor', fetcher.check_signin_infor,
                  methods=['POST'])
-app.add_url_rule('/api/authentication/check-signup-infor', 'check_signup_infor', checker_loader.check_signup_infor,
+app.add_url_rule('/api/authentication/check-signup-infor', 'check_signup_infor', fetcher.check_signup_infor,
                  methods=['POST'])
-app.add_url_rule('/api/authentication/check-profile-infor', 'check_profile_infor', checker_loader.check_profile_infor,
+app.add_url_rule('/api/authentication/check-profile-infor', 'check_profile_infor', fetcher.check_profile_infor,
                  methods=['POST'])
 app.add_url_rule('/api/authentication/check-account-exists', 'check_account_exists',
-                 checker_loader.check_account_exists, methods=['POST'])
+                 fetcher.check_account_exists, methods=['POST'])
 app.add_url_rule('/api/appointment/check-appointment-availability', 'check_appointment_availability',
-                 checker_loader.check_appointment_availability, methods=['POST'])
+                 fetcher.check_appointment_availability, methods=['POST'])
 app.add_url_rule(
     '/api/authentication/load-chart-stats-medicine-by-month',
     'load_chart_stats_medicine_by_month',
-    checker_loader.load_chart_stats_medicine_by_month,
+    fetcher.load_chart_stats_medicine_by_month,
     methods=['POST']
 )
 app.add_url_rule(
     '/api/employee/doctor/load-medicine-by-medical-bill-id',
     'load_medicines_list_by_medical_bill_id',
-    checker_loader.load_medicines_list_by_medical_bill_id,
+    fetcher.load_medicines_list_by_medical_bill_id,
     methods=['POST']
 )
 app.add_url_rule(
     '/api/authentication/load-examination-schedule-list-by-date',
     'load_examination_schedule_list_by_date',
-    checker_loader.load_examination_schedule_list_by_date,
+    fetcher.load_examination_schedule_list_by_date,
     methods=['POST']
 )
 

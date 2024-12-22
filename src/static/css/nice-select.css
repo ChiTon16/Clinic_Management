@@ -24,7 +24,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: inherit;
     white-space: nowrap;
     width: auto;
     margin-bottom: 16px;

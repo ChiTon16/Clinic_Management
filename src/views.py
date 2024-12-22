@@ -200,7 +200,7 @@ def appointment():
             email=email,
             phone_number=phone_number,
             address=address)
-
+        print()
         flash(
             'Successfully registered for examination appointment, please wait for confirmation information to be sent via phone number',
             'success')

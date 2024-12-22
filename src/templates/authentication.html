@@ -2,7 +2,7 @@
 
 {% block title %}Sign in & Sign up{% endblock %}
 
-{% block preloader %} {% endblock %}
+{#{% block preloader %} {% endblock %}#}
 
 {% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/authentication.css') }}">
@@ -48,7 +48,7 @@
     <div class="my-container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form method="post" action="{{ url_for('signin') }}" class="sign-in-form">
+                <form method="post" action=" {{ url_for('signin') }}" class="sign-in-form">
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -64,6 +64,7 @@
                     <input type="hidden" value="" name="next" id="next"/>
 
                     <button type="submit" class="btn-signin-and-signup">Sign in</button>
+
                     <a href="javascript: void(0)" class="forgot-password-btn">Forgot password</a>
                     <p class="social-text">Or sign in with social platforms</p>
                     <div class="social-media">
@@ -141,7 +142,8 @@
                 <div class="content">
                     <h3 class="none">Do you already have an account?</h3>
                     <p class="none">Please sign in to receive many offers.</p>
-                    <button class="my-btn btn-animation animation-transparent" id="sign-in-btn">Sign in</button>
+                    <button type="submit" class="my-btn btn-animation animation-transparent" id="sign-in-btn">Sign in
+                    </button>
                 </div>
                 <img src="{{ url_for('static', filename='img/signin.svg') }}" class="image" alt=""/>
             </div>

@@ -6,8 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1HV98N4L#&UNg?:E;82{Ef@Bftfpl9eC#DtTP~oJ"Pufpi|V)2&}_aqM/g?Pbp2'
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://root:{quote('talaton123')}@localhost/benhvien?charset=utf8mb4"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://root:admin123@localhost/clinic?charset=utf8mb4"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app=app)
 login = LoginManager(app=app)

@@ -1051,7 +1051,7 @@ body {
 }
 
 .fun-facts {
-    background: url('img/fun-bg.jpg');
+    background: url('../img/fun-bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -1173,7 +1173,7 @@ body {
 .why-choose .choose-right {
     height: 100%;
     width: 100%;
-    background-image: url('img/video-bg.jpg');
+    background-image: url('../img/video-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1240,7 +1240,7 @@ body {
 	Start Call to action CSS
 =================================*/
 .call-action {
-    background-image: url('img/call-bg.jpg');
+    background-image: url('../img/call-bg.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -1600,7 +1600,7 @@ body {
 }
 
 .service-details-inner-left {
-    background-image: url("img/signup-bg.jpg");
+    background-image: url("../img/signup-bg.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -1642,7 +1642,7 @@ body {
 	Start Testimonials CSS
 ===============================*/
 .testimonials {
-    background-image: url('img/testi-bg.jpg');
+    background-image: url('../img/testi-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1998,7 +1998,7 @@ body {
 	Start Clients CSS
 ==========================*/
 .clients {
-    background-image: url('img/client-bg.jpg');
+    background-image: url('../img/client-bg.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 0px;
@@ -2025,7 +2025,7 @@ body {
 	Start Team CSS
 ======================*/
 .team {
-    background-image: url('img/testi-bg.jpg');
+    background-image: url('../img/testi-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2772,7 +2772,7 @@ body {
 
 /* Blockqoute */
 .news-single blockquote {
-    background-image: url('img/blockqoute-bg.jpg');
+    background-image: url('../img/blockqoute-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2947,7 +2947,7 @@ body {
 }
 
 .news-single .single-comments.left .body {
-    float: noene;
+    float: none;
     width: 100%;
 }
 
@@ -3186,7 +3186,7 @@ body {
 
 .appointment.single-page {
     background: #fff;
-    padding-top: 100px 0;
+    padding-top: 100px;
     padding: 0;
     padding: 100px 0;
 }
@@ -3253,6 +3253,7 @@ body {
     border-radius: 4px;
     font-weight: 400;
 }
+
 
 .appointment .form-group .nice-select::after {
     right: 20px;
@@ -3352,7 +3353,7 @@ body {
 }
 
 .login .login-left {
-    background-image: url(img/signup-bg.jpg);
+    background-image: url(../img/signup-bg.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -3531,7 +3532,7 @@ body {
 }
 
 .register .register-left {
-    background-image: url(img/signup-bg.jpg);
+    background-image: url(../img/signup-bg.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -4333,7 +4334,7 @@ body {
 .about-image {
     width: 100%;
     height: 100%;
-    background-image: url(img/about-img.jpg);
+    background-image: url(../img/about-img.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -4528,7 +4529,7 @@ body {
 .our-mission-image {
     width: 100%;
     height: 100%;
-    background-image: url(img/mission-img.jpg);
+    background-image: url(../img/mission-img.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
