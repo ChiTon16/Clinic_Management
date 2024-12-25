@@ -1,67 +1,6 @@
 from src import app, views, fetcher
 
-# from src.decorators import admin_required
 
-#
-# @app.route("/")
-# def home():
-#     return render_template('index.html')
-#
-# @login.user_loader
-# def load_user(user_id):
-#     return dao.get_user_by_id(user_id)
-#
-# @app.route('/login-admin', methods=['post'])
-# def admin_login():
-#     username = request.form['username']
-#     password = request.form['password']
-#
-#     user = dao.auth_user(username = username, password = password, role = AccountRoleEnum.ADMIN)
-#     if user:
-#         login_user(user=user)
-#
-#     return redirect('/admin')
-#
-# @app.route("/login", methods=['get', 'post'])
-# def login_process():
-#     err_msg = None
-#     if request.method.__eq__('POST'):
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-#         u = dao.auth_user(username=username, password=password)
-#         if u:
-#             login_user(u)
-#             return redirect('/')
-#         else:
-#             err_msg = "Tài khoản hoặc mật khẩu không đúng"
-#
-#     return render_template('authentication.html',err_msg = err_msg)
-#
-# @app.route('/register', methods=['get', 'post'])
-# def register_process():
-#     err_msg = None
-#     if request.method.__eq__('POST'):
-#         password = request.form.get('password')
-#         confirm = request.form.get('confirm')
-#         print(request.form)
-#         if password.__eq__(confirm):
-#             data = request.form.copy()
-#             del data['confirm']
-#
-#             avatar = request.files.get('avatar')
-#
-#             dao.add_user(avatar=avatar, **data)
-#
-#             return redirect('/login')
-#         else:
-#             err_msg = 'Mật khẩu KHÔNG khớp!'
-#
-#     return render_template('register.html', err_msg=err_msg)
-#
-# @app.route("/logout", methods=['get', 'post'])
-# def logout_process():
-#     logout_user()
-#     return redirect("/login")
 
 
 app.add_url_rule('/', 'index', views.index)
@@ -69,7 +8,7 @@ app.add_url_rule('/about', 'about', views.about)
 app.add_url_rule('/medicine', 'medicine', views.medicine)
 app.add_url_rule('/notification', 'notification', views.notification)
 app.add_url_rule('/authentication', 'authentication', views.authentication)
-app.add_url_rule('/healthcare-staff', 'healthcare_staff', views.healthcare_staff)
+app.add_url_rule('/contact', 'contact', views.healthcare_staff)
 app.add_url_rule('/pay', 'pay', views.pay)
 
 app.add_url_rule('/authentication/signout', 'signout', views.signout)
@@ -78,11 +17,6 @@ app.add_url_rule('/authentication/signin', 'signin', views.signin, methods=['GET
 app.add_url_rule('/authentication/forgot-password', 'forgot_password', views.forgot_password, methods=['GET', 'POST'])
 app.add_url_rule('/authentication/reset-with-token/<token>', 'reset_with_token', views.reset_with_token,
                  methods=['POST'])
-
-
-#--- HEADER ----#
-
-
 app.add_url_rule('/pay', 'pay', views.pay)
 
 
