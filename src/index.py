@@ -35,7 +35,7 @@ app.add_url_rule('/employee/nurse', 'employee_nurse', views.employee_nurse, meth
 app.add_url_rule('/employee/doctor', 'employee_doctor', views.employee_doctor, methods=['GET', 'POST'])
 app.add_url_rule('/employee/cashier', 'employee_cashier', views.employee_cashier, methods=['GET', 'POST'])
 
-app.add_url_rule('/admin', 'admin', views.admin_login, methods=['GET', 'POST'])
+# app.add_url_rule('/admin', 'admin', views.admin_login, methods=['GET', 'POST'])
 app.add_url_rule('/admin/medicine/new', 'admin_medicine_new', views.create_medicine, methods=['POST'])
 
 app.add_url_rule('/mail/confirm/<token>', 'confirm_email', views.confirm_email)
@@ -76,4 +76,5 @@ app.add_url_rule(
 )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	from src import admin
+	app.run(debug=True)

@@ -1,0 +1,550 @@
+:root {
+    --light: #f6f6f9;
+    --grey: #eee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bx {
+    font-size: 1.7rem;
+}
+
+body.dark {
+    --light: #181a1e;
+    --grey: #25252c;
+}
+
+body {
+    background: var(--grey);
+    overflow-x: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--light);
+    width: 230px;
+    height: 100%;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar .logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    z-index: 500;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    justify-content: center;
+}
+
+.sidebar .side-menu {
+    width: 100%;
+    margin-top: 48px;
+}
+
+.sidebar .side-menu li {
+    height: 48px;
+    background: transparent;
+    margin-left: 6px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+}
+
+.sidebar .side-menu li.active {
+    background: var(--grey);
+    position: relative;
+}
+
+.sidebar .side-menu li.active a {
+    color: var(--sub-color);
+}
+
+.sidebar .side-menu li.active::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li.active::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: #363949;
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li a .bx {
+    min-width: calc(60px - ((4px + 6px) * 2));
+    display: flex;
+    font-size: 1.6rem;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.sidebar .side-menu li a:hover {
+    color: var(--sub-color);
+}
+
+.content {
+    position: relative;
+    width: calc(100% - 230px);
+    left: 230px;
+    transition: all 0.3s ease;
+    padding-bottom: 100px;
+}
+
+.sidebar.close ~ .content {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+.content nav {
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px 0 0;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.content nav::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: -20px -20px 0 var(--light);
+}
+
+.content nav a {
+    color: #363949;
+}
+
+.content nav .bx.bx-menu {
+    cursor: pointer;
+    color: #363949;
+}
+
+.content nav form {
+    max-width: 400px;
+    width: 100%;
+    margin-right: auto;
+}
+
+.content nav form .form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    position: relative;
+}
+
+.content nav form .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--grey);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    width: 100%;
+    color: #363949;
+}
+
+.content nav form .form-input button {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-color);
+    color: var(--light);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+}
+
+.content nav .notif {
+    font-size: 20px;
+    position: relative;
+}
+
+.content nav .notif i {
+    color: var(--sub-color);
+}
+
+.content nav .notif .count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    background: var(--sub-color);
+    border-radius: 50%;
+    color: var(--white);
+    border: 2px solid var(--light);
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content nav .profile {
+    font-weight: 500;
+}
+
+.content nav .profile img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.content nav .theme-toggle {
+    display: block;
+    min-width: 50px;
+    height: 25px;
+    background: var(--grey);
+    cursor: pointer;
+    position: relative;
+    border-radius: 25px;
+}
+
+.content nav .theme-toggle::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    width: calc(25px - 4px);
+    background: var(--primary-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.content nav #theme-toggle:checked + .theme-toggle::before {
+    left: calc(100% - (25px - 4px) - 2px);
+}
+
+/* Table */
+.manage-title,
+.examination-title,
+.appointment-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 40px 0;
+    color: var(--sub-color);
+}
+
+.table-manage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+td, th {
+    padding: 15px 20px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--sub-color);
+    font-weight: 200;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 500;
+}
+
+tr {
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+}
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+.table-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-btn button {
+    padding: 1px 4px;
+    margin: 0 5px;
+}
+
+.table-btn button:nth-child(1) {
+    border: 2px solid green;
+    color: green;
+}
+
+.table-btn button:nth-child(1):hover {
+    background-color: green;
+    color: var(--white);
+}
+
+.table-btn button:nth-child(2) {
+    border: 2px solid red;
+    color: red;
+}
+
+.table-btn button:nth-child(2):hover {
+    background-color: red;
+    color: var(--white);
+}
+
+.table-examination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.examination-title,
+.table-examination {
+    display: none;
+}
+
+.ex-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    display: none;
+}
+
+.btn-ex {
+    padding: 10px;
+    border: 2px solid var(--sub-color);
+    color: var(--sub-color);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-ex:hover {
+    background-color: var(--sub-color);
+    color: var(--white);
+}
+
+.day-examination-title {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.day-examination-title span {
+    margin-right: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Input Date */
+input[type="date"] {
+    background-color: #0080ff;
+    padding: 8px;
+    color: #ffffff;
+    font-size: 1.125rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+::-webkit-calendar-picker-indicator {
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.create-examination-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+form-appointment-content{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: 100vh;
+    background-color:var(--white);
+}
+
+.form-appointment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-top{
+    max-width: 670px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.form-appointment__title{
+   position: relative;
+   font-size: 2.5rem;
+   color: var(--sub-color);
+   font-weight:600;
+   text-align: center;
+   margin-bottom: 5px;
+}
+
+.form-appointment__line{
+    height: 2px;
+    background-color: var(--sub-color);
+    width: 56px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form-appointment__des{
+    color: var(--gray);
+    mix-blend-mode: normal;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 28px;
+    margin-top: 20px;
+}
+
+.form-appointment__container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-appointment__container .form {
+    margin-top: 30px;
+}
+
+.form .input-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-box label {
+    color: #333;
+}
+
+.form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.input-box input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #007bff;
+}
+
+.form .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+.address :where(input, .select-box) {
+    margin-top: 15px;
+}
+
+.select-box select {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+}
+
+.form-appointment__btn {
+    height: 55px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.form-appointment__btn:hover {
+    background-color: var(--sub-color);
+}
+
+.appointment-form{
+    display: none;
+}

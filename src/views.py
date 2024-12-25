@@ -58,7 +58,7 @@ def pay():
 
 @employee_login_required
 def employee():
-    return render_template(template_name_or_list='employee/employee_index.html')
+    return render_template(template_name_or_list='employee/employee_home.html')
 
 
 @logout_required
@@ -99,14 +99,21 @@ def signin():
         account = services.authenticate(username=username_signin, password=password_signin)
         login_user(account)
 
-        # role = enum_to_string(account.role).lower()
-        if account.role == AccountRoleEnum.PATIENT:
-            return redirect('/' if next_url is None else next_url)
 
-        elif account.role != AccountRoleEnum.ADMIN:
-            return redirect('/employee/' + enum_to_string(account.role).lower())
-        else:
-            return redirect('/admin')
+
+        account = services.authenticate(username=username_signin, password=password_signin)
+
+        login_user(account)
+        return redirect('/' if next_url is None else next_url)
+        # role = enum_to_string(account.role).lower()
+
+        # if account.role == AccountRoleEnum.PATIENT:
+        #     return redirect('/' if next_url is None else next_url)
+        #
+        # elif account.role != AccountRoleEnum.ADMIN:
+        #     return redirect('/employee/' + enum_to_string(account.role).lower())
+        # else:
+        #     return redirect('/admin')
 
 
 @logout_required
@@ -240,7 +247,7 @@ def profile_settings(slug):
 
     role = enum_to_string(current_user.role).lower()
     if role != AccountRoleEnum.PATIENT:
-        return render_template(template_name_or_list='employee/emp_profile_settings.html')
+        return render_template(template_name_or_list='employee/profile_settings.html')
 
 
 @login_required
@@ -348,11 +355,40 @@ def employee_cashier():
                            bill_list=bill_list,
                            medical_bills_list=medical_bills_list)
 
+# --------------------ADMIN-------------------- #
+def create_medicine():
+    medicine_name = request.form.get('medicine_name')
+    description = request.form.get('description')
+    price = request.form.get('price')
+    amount = request.form.get('amount')
+    image = request.files.get('image')
+    direction_for_use = request.form.get('direction_for_use')
+    medicine_type_id = request.form.get('medicine_type')
+    medicine_unit_id = request.form.get('medicine_unit')
+
+    try:
+        new_medicine = services.create_medicine(
+            medicine_name=medicine_name,
+            description=description,
+            price=price,
+            amount=amount,
+            image=image,
+            direction_for_use=direction_for_use,
+            medicine_type_id=medicine_type_id,
+            medicine_unit_id=medicine_unit_id
+        )
+
+        flash("Create new medicine successfully!")
+    except:
+        flash("Create new medicine failed!", "error")
+    return redirect("/admin/medicine/")
+
+
 
 # --------------------ADMIN-------------------- #
 # @admin_login_required
-def admin_login():
-    return render_template(template_name_or_list='admin/admin_idx.html')
+# def admin_login():
+#     return render_template(template_name_or_list='admin/admin_idx.html')
 
 
 # @login_required

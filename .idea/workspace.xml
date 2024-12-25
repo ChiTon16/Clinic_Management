@@ -5,7 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0400ef4-026b-427b-8c39-7b274b1a2054" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/static/css/admin/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/admin/analytics.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/admin/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/employee/cashier.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/employee/doctor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/employee/nurse.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/layout/status_tags.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/js/admin/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/js/admin/analytics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/js/employee/cashier.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/js/employee/doctor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/static/js/employee/nurse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/admin/admin_base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/admin/analytics.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/admin/model/modals/create_modal_medicine.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/layout/modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/templates/layout/preloading.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/admin/admin_dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/admin/reports.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/customer/profile_settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/employee/profile_settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/layout/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/layout/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,27 +58,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.admin.executor&quot;: &quot;Run&quot;,
-    &quot;Python.index.executor&quot;: &quot;Run&quot;,
-    &quot;Python.models.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/clinicManagement&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;xml.defaultSchemas&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Run",
+    "Python.admin.executor": "Run",
+    "Python.index.executor": "Run",
+    "Python.models.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/clinicManagement/src/static/js",
+    "settings.editor.selected.configurable": "xml.defaultSchemas"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\clinicManagement\src\static\css\layout" />
-      <recent name="D:\clinicManagement\src\templates" />
+      <recent name="D:\clinicManagement\src\static\js" />
+      <recent name="D:\clinicManagement\src\static\css" />
       <recent name="D:\clinicManagement\src\templates\layout" />
+      <recent name="D:\clinicManagement\src\templates" />
+      <recent name="D:\clinicManagement\src\static\js\employee" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\clinicManagement\src\templates\employee" />
       <recent name="D:\clinicManagement\src\templates\admin" />
       <recent name="D:\clinicManagement\src\templates" />
       <recent name="D:\clinicManagement\src\static\css" />

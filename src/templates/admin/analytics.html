@@ -1,0 +1,122 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}Analytics | Faith and Hope{% endblock %}
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/analytics.css') }}">
+{% endblock %}
+
+{% block tail_js %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/admin/analytics.js') }}"></script>
+    <script>
+        let medicineLabels = []
+        let medicineData = []
+        let chart
+        {% for medicine in medicine_stats %}
+            medicineLabels.push('{{ medicine.medicine_name }}')
+            medicineData.push('{{ medicine.usage_count }}')
+
+            medicineColor = generateRandomColor()
+            colors.push(medicineColor.color)
+            borderColors.push(medicineColor.borderColor)
+        {% endfor %}
+    </script>
+{% endblock %}
+
+{% block main_content %}
+    <!-- Main Content -->
+    <main>
+        <h1>Anylyses</h1>
+        <div class="choose__table">
+            <h2 class="salesBtn is__choose">Total Sales</h2>
+            <h2 class="medicineBtn">Medicine</h2>
+        </div>
+        <!-- Total Sales Table -->
+        <div class="statistic-table sales__table">
+            <h2>Total Sales</h2>
+            <div class=" d-flex justify-content-between">
+                <div class="statistic__month">
+                    <label>
+                        Month: <input class="choose__month" type="month" value="{{ default_date }}">
+                    </label>
+                </div>
+                <div class="statistic__month d-flex justify-content-between">
+                    <label>Search by Date: <input class="choose__date" type="date"></label>
+                </div>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Total Patient</th>
+                    <th>Revenue</th>
+                    <th>Percentage</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for examination in examination_stats%}
+                    <tr>
+                        <th>{{ loop.index }}</th>
+                        <th>{{ examination.examination_date.strftime('%Y-%d') }}</th>
+                        <th>{{ examination.total_examinations }}</th>
+                        <th>{{ examination.revenue }}</th>
+                        <th>%</th>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="5">Total revenue: {% if revenue_stats %}{{ revenue_stats[0].total_revenue }}{% endif %}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- End of Total Sales -->
+
+        <!-- Medicine Table -->
+        <div class="statistic-table medicine__table">
+            <h2>Medicine Uses</h2>
+            <div class=" d-flex justify-content-between">
+                <div class="statistic__month">
+                    <label>Month: <input class="choose__month" id="medicine_stats_month" name="medicine_stats_month" type="month" value="{{ default_date }}"></label>
+                </div>
+                <div class="statistic__month">
+                    <form id="medicine-search-form">
+                        <label>Search: <input class="search__table" type="text" name="kw" placeholder="Enter medicine name..." required></label>
+                        <button class="btn btn-primary rounded ms-2" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <table id="medicine-stats-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Medicine</th>
+                    <th>Unit</th>
+                    <th>Amount</th>
+                    <th>Number of uses</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for medicine in medicine_stats %}
+                    <tr class="medicine-stats-row">
+                        <td>{{ loop.index }}</td>
+                        <td>{{ medicine.medicine_name }}</td>
+                        <td>{{ medicine.unit_name }}</td>
+                        <td>{{ medicine.amount }}</td>
+                        <td>{{ medicine.usage_count }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <!-- End of Main Content -->
+{% endblock %}
+
+{% block right_section_content %}
+    <!-- Canvas section -->
+    <canvas style="padding: 24px;" class="chart sales__chart" id="sales__chart"></canvas>
+    <canvas style="padding: 24px; display: none" class="chart medicine__chart" id="medicine__chart"></canvas>
+{% endblock %}
