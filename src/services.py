@@ -1,18 +1,18 @@
 from urllib.parse import urlparse
 
-from src import dao
+from src import dao, app
 
-
-# from flask_mail import Message
+from flask_mail import Message, Mail
 
 
 def is_safe_url(url, allowed_hosts):
     url_info = urlparse(url)
     return url_info.netloc in allowed_hosts
 
+mail = Mail(app)
 
-# def send_email(to, subject, template):
-#     return mail.send(Message(subject=subject, recipients=[to], html=template, sender=app.config['MAIL_DEFAULT_SENDER']))
+def send_email(to, subject, template):
+    return mail.send(Message(subject=subject, recipients=[to], html=template, sender=app.config['MAIL_DEFAULT_SENDER']))
 
 def send_sms():
     pass

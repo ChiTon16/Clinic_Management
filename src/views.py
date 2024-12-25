@@ -11,6 +11,7 @@ from src import services
 from src.decorators import logout_required, check_is_confirmed, employee_logout_required, employee_login_required, \
     check_role
 from src.models import AccountRoleEnum
+from src.services import send_email
 
 
 def generate_token(email):
@@ -124,8 +125,8 @@ def signup():
         token = generate_token(user.email)
         subject = 'Please confirm your email'
         confirm_url = url_for('confirm_email', token=token, _external=True)
-        # html = render_template('mail/confirm_email.html', confirm_url=confirm_url)
-        # send_email(to=user.email, subject=subject, template=html)
+        html = render_template('mail/confirm_email.html', confirm_url=confirm_url)
+        send_email(to=user.email, subject=subject, template=html)
 
         login_user(account)
 
