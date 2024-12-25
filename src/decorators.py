@@ -10,7 +10,7 @@ def employee_login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
         if not current_user.is_authenticated or current_user.role == AccountRoleEnum.PATIENT:
-            flash('Please sign in to your staff account to access this website', 'warning')
+            flash('Please sign in to your role account to access this website', 'warning')
             return redirect(url_for('notification'))
         return func(*args, **kwargs)
 

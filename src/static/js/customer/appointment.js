@@ -1,14 +1,14 @@
-const btnApopointmentForm = document.querySelector('.form-appointment__btn')
+const btnAppointmentForm = document.querySelector('.form-appointment__btn')
 const appointmentForm = document.getElementById('appointment-form')
 const btnClose = document.querySelector('.btn-modal-close')
 
-btnApopointmentForm.addEventListener('click', (e) => {
+btnAppointmentForm.addEventListener('click', (e) => {
     e.preventDefault()
 })
 
 appointmentForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    showPreLoading()
+
 
     const day_of_exam = document.getElementById('day_of_exam')
     const time_of_exam = document.getElementById('time_of_exam')
@@ -43,7 +43,7 @@ appointmentForm.addEventListener('submit', (e) => {
         .catch(error => {
             console.log(error)
         })
-        .finally(() => {
-            hidePreLoading()
-        })
+        // .finally(() => {
+        //     hidePreLoading()
+        // })
 })

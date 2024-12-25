@@ -44,7 +44,7 @@ def about():
 
 
 def healthcare_staff():
-    return render_template(template_name_or_list='healthcare_staff.html')
+    return render_template(template_name_or_list='contact.html')
 
 
 def medicine():
@@ -176,6 +176,7 @@ def signout():
 # @check_is_confirmed
 def appointment():
     if request.method.__eq__('POST'):
+        print (request.form)
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
         dob = request.form.get('dob')
