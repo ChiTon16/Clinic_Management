@@ -6,6 +6,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/authentication.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block js_body %}
@@ -142,8 +143,7 @@
                 <div class="content">
                     <h3 class="none">Do you already have an account?</h3>
                     <p class="none">Please sign in to receive many offers.</p>
-                    <button type="submit" class="my-btn btn-animation animation-transparent" id="sign-in-btn">Sign in
-                    </button>
+                    <button class="my-btn btn-animation animation-transparent" id="sign-in-btn">Sign in</button>
                 </div>
                 <img src="{{ url_for('static', filename='img/signin.svg') }}" class="image" alt=""/>
             </div>
