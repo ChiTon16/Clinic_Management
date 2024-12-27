@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0400ef4-026b-427b-8c39-7b274b1a2054" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/static/css/employee/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/templates/layout/non_base_login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/authentication.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/authentication.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/layout/non_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/layout/non_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/admin/admin_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/admin/admin_base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
