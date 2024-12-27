@@ -20,7 +20,7 @@ body.dark {
 }
 
 body {
-    background: var(--grey);
+    background: var(--gray);
     overflow-x: hidden;
 }
 
@@ -67,7 +67,7 @@ body {
 }
 
 .sidebar .side-menu li.active {
-    background: var(--grey);
+    background: var(--gray);
     position: relative;
 }
 
@@ -83,7 +83,7 @@ body {
     border-radius: 50%;
     top: -40px;
     right: 0;
-    box-shadow: 20px 20px 0 var(--grey);
+    box-shadow: 20px 20px 0 var(--gray);
     z-index: -1;
 }
 
@@ -95,7 +95,7 @@ body {
     border-radius: 50%;
     bottom: -40px;
     right: 0;
-    box-shadow: 20px -20px 0 var(--grey);
+    box-shadow: 20px -20px 0 var(--gray);
     z-index: -1;
 }
 
@@ -192,7 +192,7 @@ body {
     padding: 0 16px;
     height: 100%;
     border: none;
-    background: var(--grey);
+    background: var(--gray);
     border-radius: 36px 0 0 36px;
     outline: none;
     width: 100%;
@@ -259,7 +259,7 @@ body {
     display: block;
     min-width: 50px;
     height: 25px;
-    background: var(--grey);
+    background: var(--gray);
     cursor: pointer;
     position: relative;
     border-radius: 25px;

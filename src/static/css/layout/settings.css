@@ -29,11 +29,11 @@ a {
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
-    background: var(--primary-color);
+    background: var(--blue);
     margin-bottom: 20px;
     border-radius: 8px;
 }
 
 .form-settings__btn:hover {
-    background-color: var(--sub-color);
+    background-color: var(--blue);
 }

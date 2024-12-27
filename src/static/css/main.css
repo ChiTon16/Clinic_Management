@@ -53,7 +53,7 @@ img {
 
 /* Button */
 .my-btn {
-    color: var(--primary-color);
+    color: var(--blue);
     background-color: var(--white);
     min-width: 180px;
     height: 56px;
@@ -76,7 +76,7 @@ img {
 
 .my-btn-sub {
     font-size: 1.25rem;
-    color: var(--primary-color);
+    color: var(--blue);
     font-weight: 800;
     cursor: pointer;
     position: relative;

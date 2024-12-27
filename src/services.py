@@ -14,9 +14,6 @@ mail = Mail(app)
 def send_email(to, subject, template):
     return mail.send(Message(subject=subject, recipients=[to], html=template, sender=app.config['MAIL_DEFAULT_SENDER']))
 
-def send_sms():
-    pass
-
 
 def authenticate(username, password):
     return dao.authenticate(username=username, password=password)

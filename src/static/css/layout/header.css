@@ -8,7 +8,7 @@ header {
 }
 
 .my-nav {
-    background-color: var(--primary-color);
+    background-color: var(--white);
     padding: 15px 0;
 }
 
@@ -39,7 +39,7 @@ header {
 }
 
 .my-nav.active .nav__menu li a {
-    color: var(--primary-color);
+    color: var(--cyan);
 }
 
 .nav__logo {
@@ -71,12 +71,12 @@ header {
 
 .nav__menu li a:hover{
     background-color: var(--white);
-    color: var(--sub-color);
+    color: var(--cyan);
     border-radius: 50px;
 }
 
 .my-nav.active .nav__menu li a:hover{
-    background-color: var(--sub-color);
+    background-color: var(--blue);
     color: var(--white);
     border-radius: 50px;
 }
@@ -110,7 +110,7 @@ header {
 }
 
 .avatar__des .avatar__des--btn{
-    color: var(--primary-color);
+    color: var(--cyan);
     display: block;
     transition: all 0.1s ease;
     font-size: 1rem;
@@ -124,7 +124,7 @@ header {
 .avatar__des .avatar__des--btn:hover{
     color: var(--white) !important;
     border-radius: 50px;
-    background-color: var(--sub-color)!important;
+    background-color: var(--blue)!important;
 }
 
 .avatar__image{
@@ -148,5 +148,5 @@ header {
 }
 
 .my-nav.active .nav__menu .avatar .avatar-name{
-    color: var(--primary-color);
+    color: var(--cyan);
 }

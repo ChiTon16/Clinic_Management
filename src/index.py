@@ -8,9 +8,12 @@ app.add_url_rule('/about', 'about', views.about)
 app.add_url_rule('/medicine', 'medicine', views.medicine)
 app.add_url_rule('/notification', 'notification', views.notification)
 app.add_url_rule('/authentication', 'authentication', views.authentication)
-app.add_url_rule('/contact', 'contact', views.healthcare_staff)
+app.add_url_rule('/contact', 'contact', views.contact)
 app.add_url_rule('/pay', 'pay', views.pay)
 
+
+# - HEADER - #
+app.add_url_rule('/blog', 'blog', views.blog)
 app.add_url_rule('/authentication/signout', 'signout', views.signout)
 app.add_url_rule('/authentication/signup', 'signup', views.signup, methods=['GET', 'POST'])
 app.add_url_rule('/authentication/signin', 'signin', views.signin, methods=['GET', 'POST'])

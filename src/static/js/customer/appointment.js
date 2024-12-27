@@ -9,7 +9,6 @@ btnAppointmentForm.addEventListener('click', (e) => {
 appointmentForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
-
     const day_of_exam = document.getElementById('day_of_exam')
     const time_of_exam = document.getElementById('time_of_exam')
 

@@ -40,22 +40,22 @@
                         </div>
                         <!-- End Logo -->
                     </div>
-{#                    <div class="col-lg-6 col-md-9 col-12">#}
-{#                        <!-- Main Menu -->#}
-{#                        <div class="main-menu">#}
-{#                            <nav class="navigation">#}
-{#                                <ul class="nav menu">#}
-{#                                    <li><a href="/"> Home </a></li>#}
-{#                                    <li><a href="#"> Doctor </a></li>#}
-{#                                    <li><a href="#"> Services </a></li>#}
-{#                                    <li><a href="#"> Pages </a></li>#}
-{#                                    <li><a href="#"> Blogs </a></li>#}
-{#                                    <li><a href="#"> Contact Us</a></li>#}
-{#                                </ul>#}
-{#                            </nav>#}
-{#                        </div>#}
-{#                        <!--/ End Main Menu -->#}
-{#                    </div>#}
+                    <div class="col-lg-6 col-md-9 col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li><a href="/"> Home </a></li>
+                                    <li><a href="{{ url_for('about') }}"> About </a></li>
+                                    <li><a href="#"> Services </a></li>
+                                    <li><a href="#"> Pages </a></li>
+                                    <li><a href="{{ url_for('blog') }}"> Blogs </a></li>
+                                    <li><a href="{{ url_for('contact') }}"> Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--/ End Main Menu -->
+                    </div>
                     <div class="col-lg-2 col-12">
                         <div class="get-quote">
                             <a href=" {{ url_for('appointment') }}" class="btn">Appointment</a>

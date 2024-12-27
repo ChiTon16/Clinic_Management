@@ -44,7 +44,7 @@ def about():
     return render_template(template_name_or_list='about.html')
 
 
-def healthcare_staff():
+def contact():
     return render_template(template_name_or_list='contact.html')
 
 
@@ -55,6 +55,9 @@ def medicine():
 def pay():
     return render_template(template_name_or_list='pay.html')
 
+
+def blog():
+    return render_template(template_name_or_list='blog-single.html')
 
 @employee_login_required
 def employee():
@@ -466,3 +469,4 @@ def resend_confirmation():
 
     flash('A new confirmation email has been sent.', 'success')
     return redirect(url_for('notification'))
+
