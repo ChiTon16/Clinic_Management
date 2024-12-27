@@ -302,6 +302,7 @@ table {
 td, th {
     padding: 15px 20px;
     text-align: center;
+    text-decoration-color: #0b0b0b;
 }
 
 th {
@@ -460,7 +461,7 @@ form-appointment-content{
 }
 
 .form-appointment__des{
-    color: var(--gray);
+    color: var(--black);
     mix-blend-mode: normal;
     font-weight: 300;
     font-style: normal;

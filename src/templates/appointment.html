@@ -53,25 +53,19 @@
                                 </div>
                             </div>
 
-
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="form-group"  >
-{#                                    <div class="nice-select form-control wide" tabindex="0"><span class="current">Gender</span>#}
-{#                                        <ul class="list">#}
-{#                                            <li data-value="1" class="option">Male</li>#}
-{#                                            <li data-value="2" class="option">Female</li>#}
-{#                                        </ul>#}
-{#                                    </div>#}
-                                    <select placeholder="Gender" class="nice-select form-control wide" id="gender" name="gender" required>
-                                        <option value="Male" >Male</option>
-                                        <option value="Female" >Female</option>
+                                <div class="form-group">
+                                    <select placeholder="Gender" class="nice-select form-control wide" id="gender"
+                                            name="gender" required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Day of birth" id="datepicker" required>
+                                    <input type="date" name="dob" placeholder="Day of birth"  required>
                                 </div>
                             </div>
 
@@ -83,7 +77,7 @@
 
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
-                                    <input name="phone" type="text" placeholder="Phone number" required>
+                                    <input name="phone_number" type="text" placeholder="Phone number" required>
                                 </div>
                             </div>
 
@@ -93,18 +87,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <div class="form-group">
-                                    <div class="nice-select form-control wide" tabindex="0">
-                                        <span class="current">Choose doctor</span>
-                                        <ul class="list">
-                                            <li data-value="1" class="option">Dr. Akther Hossain</li>
-                                            <li data-value="2" class="option">Dr. Dery Alex</li>
-                                            <li data-value="3" class="option">Dr. Jovis Karon</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <input type="date" name="day_of_exam" id="day_of_exam" placeholder="Date">
@@ -119,7 +102,8 @@
 
                             <div class="col-lg-12 col-md-12 col-12">
                                 <div class="form-group">
-                                    <textarea required name="message" placeholder="Write your note or message here..."></textarea>
+                                    <textarea required name="message"
+                                              placeholder="Write your message here..."></textarea>
                                 </div>
                             </div>
                         </div>

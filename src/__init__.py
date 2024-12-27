@@ -21,8 +21,13 @@ app.config['MAIL_PASSWORD'] = 'ztjl xqir sfdv hgnb'  # Thay bằng mật khẩu 
 app.config['MAIL_DEFAULT_SENDER'] = 'lev160804clone@gmail.com'
 app.config["SECURITY_PASSWORD_SALT"] = "fkslkfsdlkfnsdfnsfd"
 
+# Giới hạn bệnh nhân
+app.config['MAX_PATIENTS_PER_DAY'] = 3
+app.config["CURRENT_YEAR"] = 2024
 # Serializer để tạo token an toàn
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+
+
 
 db = SQLAlchemy(app=app)
 login = LoginManager(app=app)

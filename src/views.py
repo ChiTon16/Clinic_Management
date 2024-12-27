@@ -198,6 +198,7 @@ def appointment():
         day_of_exam = request.form.get('day_of_exam')
         time_of_exam = request.form.get('time_of_exam')
 
+        day_of_birth = datetime.strptime(dob, '%Y-%m-%d').date()
         date_obj = datetime.strptime(day_of_exam, '%Y-%m-%d').date()
         time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
         combined_datetime = datetime.combine(date_obj, time_obj)
@@ -207,7 +208,7 @@ def appointment():
             examination_date=combined_datetime,
             first_name=first_name,
             last_name=last_name,
-            dob=dob,
+            dob=day_of_birth,
             gender=gender,
             email=email,
             phone_number=phone_number,
