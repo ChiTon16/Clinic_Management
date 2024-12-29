@@ -3,6 +3,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/footer.css') }}">
 {% endblock %}
+
+{% block js_body %}
+    <script src="{{ url_for('static', filename='js/pay.js') }}"></script>
+{% endblock %}
 {% block title %}
     Home
 {% endblock %}

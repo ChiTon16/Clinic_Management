@@ -10,7 +10,12 @@ app.add_url_rule('/notification', 'notification', views.notification)
 app.add_url_rule('/authentication', 'authentication', views.authentication)
 app.add_url_rule('/contact', 'contact', views.contact)
 app.add_url_rule('/pay', 'pay', views.pay)
+app.add_url_rule('/api/cart', 'cart', views.add_to_cart, methods=['POST'])
+app.add_url_rule('/api/cart/<medicine_id>', 'update-cart', views.update_cart, methods=['put'])
+app.add_url_rule('/api/cart/<medicine_id>', 'delete-cart', views.delete_cart, methods=['delete'])
 
+with app.app_context():
+    app.add_url_rule('/create-payment-link', 'payment', views.create_payment, methods=['POST'])
 
 # - HEADER - #
 app.add_url_rule('/blog', 'blog', views.blog)

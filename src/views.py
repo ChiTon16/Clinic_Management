@@ -1,16 +1,18 @@
 from datetime import datetime
 
-from flask import render_template, request, redirect, url_for, flash, get_flashed_messages
+from flask import render_template, request, redirect, url_for, flash, get_flashed_messages, session, jsonify
 from flask_login import login_required, current_user, login_user, logout_user
 # from src.services import send_email
 from itsdangerous import URLSafeTimedSerializer
+from payos import PaymentData
+import random
 
-from src import app
-from src import db, login
+from src import app, payOS
+from src import db, login, utils
 from src import services
 from src.decorators import logout_required, check_is_confirmed, employee_logout_required, employee_login_required, \
     check_role
-from src.models import AccountRoleEnum
+from src.models import AccountRoleEnum, Medicine
 from src.services import send_email
 
 
@@ -33,6 +35,7 @@ def confirm_token(token, expiration=86400):
 def common_response():
     return {
         'default_date': datetime.now().strftime('%Y-%m'),
+        'cart': utils.cart_stats(session.get(app.config['CART_KEY']))
     }
 
 
@@ -49,11 +52,109 @@ def contact():
 
 
 def medicine():
-    return render_template(template_name_or_list='customer/medicine.html')
+    medicines = Medicine.query.all()  # Lấy tất cả thuốc từ bảng
+    return render_template(template_name_or_list='customer/medicine.html', medicines=medicines)
 
 
 def pay():
+    # session['cart'] = {
+    #     "1": {
+    #         "id": "1",
+    #         "name": "Ma Tuy",
+    #         "type": "vien",
+    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305020/xrjcurzker9wxgyi4r49.jpg",
+    #         "des": "goat",
+    #         "price": 5555555,
+    #         "quantity": 2
+    #     },
+    #     "2": {
+    #         "id": "2",
+    #         "name": "Ma Tuy",
+    #         "type": "vien",
+    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305056/l7uj5mrv0veneug3khrj.webp",
+    #         "des": "Pho goat",
+    #         "price": 5555555,
+    #         "quantity": 2
+    #     }
+    # }
     return render_template(template_name_or_list='pay.html')
+
+def add_to_cart():
+    data = request.json
+    id = str(data['id'])
+
+    key = app.config['CART_KEY'] # 'cart'
+    cart = session[key] if key in session else {}
+
+    if id in cart:
+        cart[id]['quantity'] += 1
+    else:
+        name = data['name']
+        type = data['type']
+        image = data['image']
+        des = data['des']
+        price = data['price']
+
+        cart[id] = {
+            "id": id,
+            "name": name,
+            "type": type,
+            "image": image,
+            "des": des,
+            "price": price,
+            "quantity": 1
+        }
+    session[key] = cart
+
+    return jsonify(utils.cart_stats(cart=cart))
+
+def update_cart(medicine_id):
+    key = app.config['CART_KEY']  # 'cart'
+    cart = session.get(key)
+
+    if cart and medicine_id in cart:
+        quantity = request.json['quantity']
+        cart[medicine_id]['quantity'] = int(request.json['quantity'])
+
+    session[key] = cart
+
+    return jsonify(utils.cart_stats(cart=cart))
+
+def delete_cart(medicine_id):
+    key = app.config['CART_KEY']  # 'cart'
+    cart = session.get(key)
+
+    if cart and medicine_id in cart:
+        del cart[medicine_id]
+
+    session[key] = cart
+
+    return jsonify(utils.cart_stats(cart=cart))
+
+def create_payment():
+    domain = "http://127.0.0.1:5000"
+    try:
+        # Lấy số tiền từ yêu cầu
+        request_data = request.get_json()
+        amount = request_data.get('amount', None)
+
+        if not amount or amount <= 0:
+            return jsonify({"error": "Invalid amount"}), 400
+
+        paymentData = PaymentData(
+            orderCode=random.randint(1000, 99999),
+            amount=amount,
+            description="demo",\
+            cancelUrl= f"{domain}/cancel.html",
+            returnUrl= f"{domain}/success.html"
+        )
+        app.logger.info(f"PaymentData: {paymentData}")
+        payosCreatePayment = payOS.createPaymentLink(paymentData)
+        app.logger.info(f"Payment Link Created: {payosCreatePayment}")
+        return jsonify(payosCreatePayment.to_json())
+    except Exception as e:
+        app.logger.error(f"Error in create_payment: {e}")
+        return jsonify(error=str(e)), 403
 
 
 def blog():
