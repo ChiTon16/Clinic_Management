@@ -1,0 +1,118 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Pay{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pay.css') }}">
+{% endblock %}
+
+{% block js_body %}
+<script src="{{ url_for('static', filename='js/pay.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="banner">
+        <div class="my-grid">
+            <div class="my-row">
+                <div class="my-col-6">
+                    <div class="banner__content">
+                        <h1 class="banner__content--title">About F&H</h1>
+                        <p class="banner__content--des">
+                            Below is some information to help you better understand us. At the same time, we also want
+                            to
+                            bring peace of mind about our services.
+                        </p>
+                        <div class="banner__content--btn">
+                            {% if not current_user.is_authenticated %}
+                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-col-6">
+                    <div class=" banner__image">
+                        <img src="{{ url_for('static', filename='images/About.svg') }}" alt="About">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pay-content">
+        <div class="my-grid">
+            <div class="my-row">
+                <div class="my-col-8">
+                    <div class="cart-title">
+                        <i class="fa-solid fa-prescription-bottle-medical"></i>
+                        <h1>Your Cart</h1>
+                    </div>
+                    <div class="card-list">
+                        {% for c in session['cart'].values() %}
+                        <div class="card-item" id="cart{{ c.id }}">
+                            <div class="card-item__infor">
+                                <div class="card-item__info--image">
+                                    <img src="{{ c.image }}"
+                                         alt="Medicine-1">
+                                </div>
+
+                                <div class="card-item__infor--des">
+                                    <span class="card-item__infor--des__name">{{c.name}}</span>
+                                    <div class="card-item__infor--des__type">
+                                        Type:
+                                        <span>{{c.type}}</span>
+                                    </div>
+                                    <div class="card-item__infor--des__ingredient">
+                                        {{c.des}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="card-item__price">{{c.price}}</span>
+
+                            <div class="card-item__quantity">
+<!--                                <button class="plus-btn">-->
+<!--                                    <i class="fa-solid fa-minus"></i>-->
+<!--                                </button>-->
+<!--                                <span>{{c.quantity}}</span>-->
+<!--                                <button class="minus-btn">-->
+<!--                                    <i class="fa-solid fa-plus"></i>-->
+<!--                                </button>-->
+                                <input type="number" onblur="updateCart({{ c.id }}, this)"
+                                    value="{{ c.quantity }}" class="form-control">
+                            </div>
+
+                            <div class="remove-btn">
+                                <button onclick="deleteCart({{c.id}})" ><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="my-col-4">
+                    <div class="money">
+                        <div class="sl">
+                            <h3 >Count</h3>
+                            <h3 class="quantity">{{ cart.total_quantity }}</h3>
+                        </div>
+                        <div class="money__total">
+                            <h3>Total</h3>
+                            <h3 class="cart-amount">{{ "{:,.0f}" .format(cart.total_amount) }}</h3>
+                        </div>
+                        <button class="pay-btn" id="submit">Pay</button>
+                        <div class="rule">
+                            By placing a purchase order, you agree to the
+                            F&H Medicne Terms of Service, Personal Data Collection and Processing Policy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
