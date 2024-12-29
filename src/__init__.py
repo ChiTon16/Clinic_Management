@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer
+import cloudinary
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1HV98N4L#&UNg?:E;82{Ef@Bftfpl9eC#DtTP~oJ"Pufpi|V)2&}_aqM/g?Pbp2'
@@ -32,9 +33,8 @@ serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 db = SQLAlchemy(app=app)
 login = LoginManager(app=app)
 
-# cloudinary.config(
-#     cloud_name="duwdx2tgu",
-#     api_key="646743949231237",
-#     api_secret="jbac0w3FuckWA57tHsMH45ljksA",  # Click 'View API Keys' above to copy your API secret
-#     secure=True
-# )
+cloudinary.config(
+	cloud_name="duwdx2tgu",
+	api_key="646743949231237",
+	api_secret="jbac0w3FuckWA57tHsMH45ljksA"
+)
