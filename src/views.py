@@ -438,18 +438,14 @@ def pay():
     #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305020/xrjcurzker9wxgyi4r49.jpg",
     #         "des": "goat",
     #         "price": 5555555,
-    #         "quantity": 2
+    #         "quantity": 0
     #     },
-    #     "2": {
-    #         "id": "2",
-    #         "name": "Ma Tuy",
-    #         "type": "vien",
-    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305056/l7uj5mrv0veneug3khrj.webp",
-    #         "des": "Pho goat",
-    #         "price": 5555555,
-    #         "quantity": 2
-    #     }
     # }
+    session['cart'] = {
+
+    }
+    key = app.config['CART_KEY']  # 'cart'
+    cart = session[key] if key in session else {}
     return render_template(template_name_or_list='pay.html')
 
 

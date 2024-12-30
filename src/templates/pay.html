@@ -22,6 +22,7 @@
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
                         <h1>Your Cart</h1>
                     </div>
+                    {% if session.get('cart') %}
                     <div class="card-list">
                         {% for c in session['cart'].values() %}
                         <div class="card-item" id="cart{{ c.id }}">
@@ -63,6 +64,7 @@
                         </div>
                         {% endfor %}
                     </div>
+                    {% endif %}
                 </div>
 
                 <div class="my-col-4">
