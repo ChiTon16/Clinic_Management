@@ -51,7 +51,7 @@ function updateCart(medicineId, obj) {
 }
 
 function deleteCart(medicineId) {
-    if (confirm("Bạn chac chan xoa khong?") == true) {
+    if (confirm("Bạn xác nhận xóa?") == true) {
         fetch(`/api/cart/${medicineId}`, {
         method: "delete",
     }).then(res => res.json()).then(data => {

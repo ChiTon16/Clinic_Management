@@ -14,34 +14,6 @@
 {% endblock %}
 
 {% block content %}
-    <div class="banner">
-        <div class="my-grid">
-            <div class="my-row">
-                <div class="my-col-6">
-                    <div class="banner__content">
-                        <h1 class="banner__content--title">About F&H</h1>
-                        <p class="banner__content--des">
-                            Below is some information to help you better understand us. At the same time, we also want
-                            to
-                            bring peace of mind about our services.
-                        </p>
-                        <div class="banner__content--btn">
-                            {% if not current_user.is_authenticated %}
-                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="my-col-6">
-                    <div class=" banner__image">
-                        <img src="{{ url_for('static', filename='img/about-img.jpg') }}" alt="About">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="pay-content">
         <div class="my-grid">
             <div class="my-row">
@@ -106,7 +78,7 @@
                         <button class="pay-btn" id="submit">Pay</button>
                         <div class="rule">
                             By placing a purchase order, you agree to the
-                            F&H Medicne Terms of Service, Personal Data Collection and Processing Policy
+                            MediPlus Terms of Service, Personal Data Collection and Processing Policy
                         </div>
                     </div>
                 </div>

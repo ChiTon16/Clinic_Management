@@ -4,7 +4,8 @@
 
 {% block css %}
     {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">#}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/customer/medicine.css') }}">
 {% endblock %}
 
@@ -14,32 +15,6 @@
 {% endblock %}
 
 {% block content %}
-    <div class="banner">
-        <div class="my-grid">
-            <div class="my-row">
-                <div class="my-col-6">
-                    <div class="banner__content">
-                        <h1 class="banner__content--title">Medicine Store</h1>
-                        <p class="banner__content--des">
-                            Welcome to F&H medicine store.
-                        </p>
-                        <div class="banner__content--btn">
-                            <a href="" class="my-btn">Learn More</a>
-                            {% if not current_user.is_authenticated %}
-                                <a href="{{ url_for('authentication') }}" class="my-btn">Sign in</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-
-<!--                <div class="my-col-6">-->
-<!--                    <div class=" banner__image">-->
-<!--                        <img src="{{ url_for('static', filename='img/Medicine.svg') }}" alt="Medicine">-->
-<!--                    </div>-->
-<!--                </div>-->
-            </div>
-        </div>
-    </div>
 
     <div class="medicine-content">
         <div class="my-grid">
@@ -134,7 +109,7 @@
 
                 <div class="my-col-9">
                     <div class="shopping-header">
-                        <h1>F&H Medicine Shop</h1>
+                        <h1>MediPlus Medicine Shop</h1>
                         <div class="shopping">
                             <img src="{{ url_for('static', filename='img/shopping.svg') }}" alt="Shopping">
                             <span class="quantity">{{ cart.total_quantity }}</span>

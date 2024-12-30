@@ -20,14 +20,14 @@ h3 {
     z-index: 2;
     width: 100%;
     background-color: var(--white);
-    padding: 100px;
+    padding: 50px;
 }
 
 /* Left */
 .left {
     background-color: var(--white);
     box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.1);
-    margin-top: 71px;
+    margin-top: 30px;
 }
 
 .filter {
@@ -303,7 +303,7 @@ h1 {
 }
 
 .card-item__btn button:hover {
-    background-color: #CCCCCC;
+    background-color: black;
 }
 
 .change{

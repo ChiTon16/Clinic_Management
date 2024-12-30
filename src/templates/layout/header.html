@@ -7,10 +7,9 @@
                 <div class="col-lg-6 col-md-5 col-12">
                     <!-- Contact -->
                     <ul class="top-link">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Doctors</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                        <li><a href="{{ url_for('employee') }}">Employee</a></li>
                     </ul>
                     <!-- End Contact -->
                 </div>
@@ -45,12 +44,12 @@
                         <div class="main-menu">
                             <nav class="navigation">
                                 <ul class="nav menu">
-                                    <li><a href="/"> Home </a></li>
+                                    <li><a href="{{ url_for('index') }}"> Home </a></li>
                                     <li><a href="{{ url_for('about') }}"> About </a></li>
+                                    <li><a href="{{ url_for('contact') }}"> Contact Us</a></li>
+                                    <li><a href="{{ url_for('blog') }}"> Blogs </a></li>
                                     <li><a href="{{ url_for('medicine') }}"> Medicine </a></li>
                                     <li><a href="{{ url_for('pay') }}"> Pay </a></li>
-                                    <li><a href="{{ url_for('blog') }}"> Blogs </a></li>
-                                    <li><a href="{{ url_for('contact') }}"> Contact Us</a></li>
                                 </ul>
                             </nav>
                         </div>

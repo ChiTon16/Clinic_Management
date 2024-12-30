@@ -17,6 +17,17 @@ def employee_login_required(func):
     return decorated_function
 
 
+def user_login_required(func):
+    @wraps(func)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated:
+            flash('Please sign in to your account to book an appointment', 'warning')
+            return redirect(url_for('notification'))
+        return func(*args, **kwargs)
+
+    return decorated_function
+
+
 def admin_login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):

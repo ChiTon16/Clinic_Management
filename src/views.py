@@ -11,7 +11,7 @@ from src import app, payOS
 from src import db, login, utils
 from src import services
 from src.decorators import logout_required, check_is_confirmed, employee_logout_required, employee_login_required, \
-    check_role
+    check_role, admin_login_required, user_login_required
 from src.models import AccountRoleEnum, Medicine
 from src.services import send_email
 
@@ -51,114 +51,20 @@ def contact():
     return render_template(template_name_or_list='contact.html')
 
 
-def medicine():
-    medicines = Medicine.query.all()  # Lấy tất cả thuốc từ bảng
-    return render_template(template_name_or_list='customer/medicine.html', medicines=medicines)
-
-
-def pay():
-    # session['cart'] = {
-    #     "1": {
-    #         "id": "1",
-    #         "name": "Ma Tuy",
-    #         "type": "vien",
-    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305020/xrjcurzker9wxgyi4r49.jpg",
-    #         "des": "goat",
-    #         "price": 5555555,
-    #         "quantity": 2
-    #     },
-    #     "2": {
-    #         "id": "2",
-    #         "name": "Ma Tuy",
-    #         "type": "vien",
-    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305056/l7uj5mrv0veneug3khrj.webp",
-    #         "des": "Pho goat",
-    #         "price": 5555555,
-    #         "quantity": 2
-    #     }
-    # }
-    return render_template(template_name_or_list='pay.html')
-
-def add_to_cart():
-    data = request.json
-    id = str(data['id'])
-
-    key = app.config['CART_KEY'] # 'cart'
-    cart = session[key] if key in session else {}
-
-    if id in cart:
-        cart[id]['quantity'] += 1
-    else:
-        name = data['name']
-        type = data['type']
-        image = data['image']
-        des = data['des']
-        price = data['price']
-
-        cart[id] = {
-            "id": id,
-            "name": name,
-            "type": type,
-            "image": image,
-            "des": des,
-            "price": price,
-            "quantity": 1
-        }
-    session[key] = cart
-
-    return jsonify(utils.cart_stats(cart=cart))
-
-def update_cart(medicine_id):
-    key = app.config['CART_KEY']  # 'cart'
-    cart = session.get(key)
-
-    if cart and medicine_id in cart:
-        quantity = request.json['quantity']
-        cart[medicine_id]['quantity'] = int(request.json['quantity'])
-
-    session[key] = cart
-
-    return jsonify(utils.cart_stats(cart=cart))
-
-def delete_cart(medicine_id):
-    key = app.config['CART_KEY']  # 'cart'
-    cart = session.get(key)
-
-    if cart and medicine_id in cart:
-        del cart[medicine_id]
-
-    session[key] = cart
-
-    return jsonify(utils.cart_stats(cart=cart))
-
-def create_payment():
-    domain = "http://127.0.0.1:5000"
-    try:
-        # Lấy số tiền từ yêu cầu
-        request_data = request.get_json()
-        amount = request_data.get('amount', None)
-
-        if not amount or amount <= 0:
-            return jsonify({"error": "Invalid amount"}), 400
-
-        paymentData = PaymentData(
-            orderCode=random.randint(1000, 99999),
-            amount=amount,
-            description="demo",\
-            cancelUrl= f"{domain}/cancel.html",
-            returnUrl= f"{domain}/success.html"
-        )
-        app.logger.info(f"PaymentData: {paymentData}")
-        payosCreatePayment = payOS.createPaymentLink(paymentData)
-        app.logger.info(f"Payment Link Created: {payosCreatePayment}")
-        return jsonify(payosCreatePayment.to_json())
-    except Exception as e:
-        app.logger.error(f"Error in create_payment: {e}")
-        return jsonify(error=str(e)), 403
-
-
 def blog():
     return render_template(template_name_or_list='blog-single.html')
+
+
+def medicine():
+    medicines_list = services.get_medicines_list()
+    return render_template(template_name_or_list='customer/medicine.html', medicines=medicines_list)
+
+
+def notification():
+    if not get_flashed_messages():
+        return redirect(url_for('index'))
+    return render_template(template_name_or_list='noti.html')
+
 
 @employee_login_required
 def employee():
@@ -175,13 +81,6 @@ def password_reset(token):
     return render_template(template_name_or_list='customer/password_reset.html', token=token)
 
 
-def notification():
-    if not get_flashed_messages():
-        return redirect(url_for('index'))
-
-    return render_template(template_name_or_list='noti.html')
-
-
 # --------------------AUTHENTICATION-------------------- #
 @login.user_loader
 def account_load(account_id):
@@ -194,30 +93,23 @@ def enum_to_string(role):
 
 @logout_required
 def signin():
-    print('user login')
     if request.method.__eq__('POST'):
         next_url = request.form.get('next')
         username_signin = request.form.get('username_signin')
         password_signin = request.form.get('password_signin')
-        print(username_signin, password_signin)
         account = services.authenticate(username=username_signin, password=password_signin)
         login_user(account)
-
-
 
         account = services.authenticate(username=username_signin, password=password_signin)
 
         login_user(account)
         return redirect('/' if next_url is None else next_url)
-        # role = enum_to_string(account.role).lower()
 
-        # if account.role == AccountRoleEnum.PATIENT:
-        #     return redirect('/' if next_url is None else next_url)
-        #
-        # elif account.role != AccountRoleEnum.ADMIN:
-        #     return redirect('/employee/' + enum_to_string(account.role).lower())
-        # else:
-        #     return redirect('/admin')
+
+@login_required
+def signout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @logout_required
@@ -254,7 +146,7 @@ def forgot_password():
         token = generate_token(email)
         recovery_url = url_for('password_reset', token=token, _external=True)
         html = render_template('mail/password_reset_email.html', recovery_url=recovery_url)
-        # send_email(to=email, subject=subject, template=html)
+        send_email(to=email, subject=subject, template=html)
 
         flash('The reset request has been sent to via email.', 'success')
         return redirect(url_for('notification'))
@@ -277,18 +169,11 @@ def reset_with_token(token):
         return redirect(url_for('notification'))
 
 
-@login_required
-def signout():
-    logout_user()
-    return redirect(url_for('index'))
-
-
 # --------------------CUSTOMER FUNCTIONS-------------------- #
-# @login_required
-# @check_is_confirmed
+@user_login_required
+@check_is_confirmed
 def appointment():
     if request.method.__eq__('POST'):
-        print (request.form)
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
         dob = request.form.get('dob')
@@ -304,21 +189,26 @@ def appointment():
         time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
         combined_datetime = datetime.combine(date_obj, time_obj)
 
-        examination_schedule = services.create_examination_schedule(
-            patient_id=current_user.user.id,
-            examination_date=combined_datetime,
-            first_name=first_name,
-            last_name=last_name,
-            dob=day_of_birth,
-            gender=gender,
-            email=email,
-            phone_number=phone_number,
-            address=address)
-        print()
-        flash(
-            'Successfully registered for examination appointment, please wait for confirmation information to be sent via phone number',
-            'success')
-        return redirect(url_for('notification'))
+        if day_of_birth < datetime.today().date() or date_obj < datetime.today().date():
+            flash(
+                'Cannot create an appointment for the past!',
+                'danger')
+            return redirect(url_for('notification'))
+        else:
+            examination_schedule = services.create_examination_schedule(
+                patient_id=current_user.user.id,
+                examination_date=combined_datetime,
+                first_name=first_name,
+                last_name=last_name,
+                dob=day_of_birth,
+                gender=gender,
+                email=email,
+                phone_number=phone_number,
+                address=address)
+            flash(
+                'Successfully create an appointment, please wait for confirmation information to be sent via phone number',
+                'success')
+            return redirect(url_for('notification'))
 
     return render_template(template_name_or_list='appointment.html')
 
@@ -460,6 +350,7 @@ def employee_cashier():
                            bill_list=bill_list,
                            medical_bills_list=medical_bills_list)
 
+
 # --------------------ADMIN-------------------- #
 def create_medicine():
     medicine_name = request.form.get('medicine_name')
@@ -489,45 +380,9 @@ def create_medicine():
     return redirect("/admin/medicine/")
 
 
-
-# --------------------ADMIN-------------------- #
-# @admin_login_required
-# def admin_login():
-#     return render_template(template_name_or_list='admin/admin_idx.html')
-
-
-# @login_required
-# @check_role(AccountRoleEnum.ADMIN)
-# def admin():
-#     return render_template()
-
-
-def create_medicine():
-    medicine_name = request.form.get('medicine_name')
-    description = request.form.get('description')
-    price = request.form.get('price')
-    amount = request.form.get('amount')
-    image = request.files.get('image')
-    direction_for_use = request.form.get('direction_for_use')
-    medicine_type_id = request.form.get('medicine_type')
-    medicine_unit_id = request.form.get('medicine_unit')
-
-    try:
-        new_medicine = services.create_medicine(
-            medicine_name=medicine_name,
-            description=description,
-            price=price,
-            amount=amount,
-            image=image,
-            direction_for_use=direction_for_use,
-            medicine_type_id=medicine_type_id,
-            medicine_unit_id=medicine_unit_id
-        )
-
-        flash("Create new medicine successfully!")
-    except:
-        flash("Create new medicine failed!", "error")
-    return redirect("/admin/medicine/")
+@admin_login_required
+def admin_login():
+    return render_template(template_name_or_list='admin/admin_base.html')
 
 
 # --------------------VERIFY EMAIL-------------------- #
@@ -572,3 +427,108 @@ def resend_confirmation():
     flash('A new confirmation email has been sent.', 'success')
     return redirect(url_for('notification'))
 
+
+# -------------------- PAYMENT -------------------- #
+def pay():
+    # session['cart'] = {
+    #     "1": {
+    #         "id": "1",
+    #         "name": "Ma Tuy",
+    #         "type": "vien",
+    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305020/xrjcurzker9wxgyi4r49.jpg",
+    #         "des": "goat",
+    #         "price": 5555555,
+    #         "quantity": 2
+    #     },
+    #     "2": {
+    #         "id": "2",
+    #         "name": "Ma Tuy",
+    #         "type": "vien",
+    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305056/l7uj5mrv0veneug3khrj.webp",
+    #         "des": "Pho goat",
+    #         "price": 5555555,
+    #         "quantity": 2
+    #     }
+    # }
+    return render_template(template_name_or_list='pay.html')
+
+
+def add_to_cart():
+    data = request.json
+    id = str(data['id'])
+
+    key = app.config['CART_KEY']  # 'cart'
+    cart = session[key] if key in session else {}
+
+    if id in cart:
+        cart[id]['quantity'] += 1
+    else:
+        name = data['name']
+        type = data['type']
+        image = data['image']
+        des = data['des']
+        price = data['price']
+
+        cart[id] = {
+            "id": id,
+            "name": name,
+            "type": type,
+            "image": image,
+            "des": des,
+            "price": price,
+            "quantity": 1
+        }
+    session[key] = cart
+
+    return jsonify(utils.cart_stats(cart=cart))
+
+
+def update_cart(medicine_id):
+    key = app.config['CART_KEY']  # 'cart'
+    cart = session.get(key)
+
+    if cart and medicine_id in cart:
+        quantity = request.json['quantity']
+        cart[medicine_id]['quantity'] = int(request.json['quantity'])
+
+    session[key] = cart
+
+    return jsonify(utils.cart_stats(cart=cart))
+
+
+def delete_cart(medicine_id):
+    key = app.config['CART_KEY']  # 'cart'
+    cart = session.get(key)
+
+    if cart and medicine_id in cart:
+        del cart[medicine_id]
+
+    session[key] = cart
+
+    return jsonify(utils.cart_stats(cart=cart))
+
+
+def create_payment():
+    domain = "http://127.0.0.1:5000"
+    try:
+        # Lấy số tiền từ yêu cầu
+        request_data = request.get_json()
+        amount = request_data.get('amount', None)
+
+        if not amount or amount <= 0:
+            return jsonify({"error": "Invalid amount"}), 400
+
+        paymentData = PaymentData(
+            orderCode=random.randint(1000, 99999),
+            amount=amount,
+            description="demo",
+            cancelUrl=f"{domain}/cancel.html",
+            returnUrl=f"{domain}/success.html"
+        )
+        app.logger.info(f"PaymentData: {paymentData}")
+        payosCreatePayment = payOS.createPaymentLink(paymentData)
+        app.logger.info(f"Payment Link Created: {payosCreatePayment}")
+        return jsonify(payosCreatePayment.to_json())
+    except Exception as e:
+        app.logger.error(f"Error in create_payment: {e}")
+        return jsonify(error=str(e)), 403

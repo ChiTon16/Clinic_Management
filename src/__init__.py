@@ -1,5 +1,5 @@
 import os
-from urllib.parse import quote
+import cloudinary
 
 from dotenv import load_dotenv
 from flask import Flask
@@ -40,12 +40,9 @@ app.config["CURRENT_YEAR"] = 2024
 # Serializer để tạo token an toàn
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
-
-
-
-
 db = SQLAlchemy(app=app)
 login = LoginManager(app=app)
+mail = Mail(app)
 
 cloudinary.config(
 	cloud_name="duwdx2tgu",
