@@ -1,4 +1,3 @@
-
 const darkMode = document.querySelector('.dark-mode');
 
 darkMode.addEventListener('click', () => {

@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 
 from flask import render_template, request, redirect, url_for, flash, get_flashed_messages, session, jsonify
@@ -5,14 +6,13 @@ from flask_login import login_required, current_user, login_user, logout_user
 # from src.services import send_email
 from itsdangerous import URLSafeTimedSerializer
 from payos import PaymentData
-import random
 
 from src import app, payOS
 from src import db, login, utils
 from src import services
 from src.decorators import logout_required, check_is_confirmed, employee_logout_required, employee_login_required, \
     check_role, admin_login_required, user_login_required
-from src.models import AccountRoleEnum, Medicine
+from src.models import AccountRoleEnum
 from src.services import send_email
 
 
@@ -189,7 +189,7 @@ def appointment():
         time_obj = datetime.strptime(time_of_exam, '%H:%M').time()
         combined_datetime = datetime.combine(date_obj, time_obj)
 
-        if day_of_birth < datetime.today().date() or date_obj < datetime.today().date():
+        if day_of_birth > datetime.today().date() or date_obj < datetime.today().date():
             flash(
                 'Cannot create an appointment for the past!',
                 'danger')
@@ -206,7 +206,7 @@ def appointment():
                 phone_number=phone_number,
                 address=address)
             flash(
-                'Successfully create an appointment, please wait for confirmation information to be sent via phone number',
+                'Successfully create an appointment, please wait for confirmation to be sent via phone number',
                 'success')
             return redirect(url_for('notification'))
 
@@ -422,13 +422,14 @@ def resend_confirmation():
     confirm_url = url_for('confirm_email', token=token, _external=True)
     html = render_template('mail/confirm_email.html', confirm_url=confirm_url)
     subject = 'Please confirm your email'
-    # send_email(current_user.user.email, subject, html)
+    send_email(current_user.user.email, subject, html)
 
     flash('A new confirmation email has been sent.', 'success')
     return redirect(url_for('notification'))
 
 
 # -------------------- PAYMENT -------------------- #
+@user_login_required
 def pay():
     # session['cart'] = {
     #     "1": {

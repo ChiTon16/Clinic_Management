@@ -23,9 +23,9 @@ function addToCart(id, name, type, image, des, price) {
             'Content-Type': 'application/json'
         }
     }).then(res => res.json()).then(data => {
-       console.info(data)
-       let d = document.getElementsByClassName("quantity")
-       for (let i =0; i< d.length; i++)
+        console.info(data)
+        let d = document.getElementsByClassName("quantity")
+        for (let i = 0; i < d.length; i++)
             d[i].innerText = data.total_quantity
     })
 }
@@ -40,12 +40,12 @@ function updateCart(medicineId, obj) {
             "Content-Type": "application/json"
         }
     }).then(res => res.json()).then(data => {
-       let d = document.getElementsByClassName("quantity")
-       for (let i =0; i< d.length; i++)
+        let d = document.getElementsByClassName("quantity")
+        for (let i = 0; i < d.length; i++)
             d[i].innerText = data.total_quantity
 
-       let d2 = document.getElementsByClassName("cart-amount")
-       for (let i =0; i< d.length; i++)
+        let d2 = document.getElementsByClassName("cart-amount")
+        for (let i = 0; i < d.length; i++)
             d2[i].innerText = data.total_amount.toLocaleString("en-US")
     })
 }
@@ -53,26 +53,27 @@ function updateCart(medicineId, obj) {
 function deleteCart(medicineId) {
     if (confirm("Bạn xác nhận xóa?") == true) {
         fetch(`/api/cart/${medicineId}`, {
-        method: "delete",
-    }).then(res => res.json()).then(data => {
-       let d = document.getElementsByClassName("quantity")
-       for (let i =0; i< d.length; i++)
-            d[i].innerText = data.total_quantity
+            method: "delete",
+        }).then(res => res.json()).then(data => {
+            let d = document.getElementsByClassName("quantity")
+            for (let i = 0; i < d.length; i++)
+                d[i].innerText = data.total_quantity
 
-       let d2 = document.getElementsByClassName("cart-amount")
-       for (let i =0; i< d.length; i++)
-            d2[i].innerText = data.total_amount.toLocaleString("en-US")
+            let d2 = document.getElementsByClassName("cart-amount")
+            for (let i = 0; i < d.length; i++)
+                d2[i].innerText = data.total_amount.toLocaleString("en-US")
 
-       let c = document.getElementById(`cart${medicineId}`)
-       c.style.display = "none"
-    }).catch(err => console.info(err)) //js promise
+            let c = document.getElementById(`cart${medicineId}`)
+            c.style.display = "none"
+        }).catch(err => console.info(err)) //js promise
     }
 }
 
 
-document.getElementById('submit').addEventListener('click',submitForm)
-async function submitForm(){
-  // Lấy giá trị từ ô cart-amount
+document.getElementById('submit').addEventListener('click', submitForm)
+
+async function submitForm() {
+    // Lấy giá trị từ ô cart-amount
     const cartAmountElement = document.querySelector('.cart-amount');
     if (!cartAmountElement) {
         console.error('Element with class cart-amount not found!');
@@ -83,16 +84,16 @@ async function submitForm(){
     // Lấy số tiền (dạng chuỗi) và chuyển đổi sang số
     const cartAmountText = cartAmountElement.textContent.trim();
     const cartAmount = parseFloat(cartAmountText.replace(/,/g, ''));
-  const response = await fetch('/create-payment-link',{
-    method:'post',
-    headers: {
-                'Content-Type': 'application/json',
-            },
-    body: JSON.stringify({
-                amount: cartAmount, // Tổng số tiền
-            }),
-  })
-  const payment = await response.json()
-  console.log(payment)
-  window.open(payment.checkoutUrl);
+    const response = await fetch('/create-payment-link', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            amount: cartAmount, // Tổng số tiền
+        }),
+    })
+    const payment = await response.json()
+    console.log(payment)
+    window.open(payment.checkoutUrl);
 }

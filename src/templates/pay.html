@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block js_body %}
-<script src="{{ url_for('static', filename='js/pay.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pay.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -23,54 +23,55 @@
                         <h1>Your Cart</h1>
                     </div>
                     {% if session.get('cart') %}
-                    <div class="card-list">
-                        {% for c in session['cart'].values() %}
-                        <div class="card-item" id="cart{{ c.id }}">
-                            <div class="card-item__infor">
-                                <div class="card-item__info--image">
-                                    <img src="{{ c.image }}"
-                                         alt="Medicine-1">
-                                </div>
+                        <div class="card-list">
+                            {% for c in session['cart'].values() %}
+                                <div class="card-item" id="cart{{ c.id }}">
+                                    <div class="card-item__infor">
+                                        <div class="card-item__info--image">
+                                            <img src="{{ c.image }}"
+                                                 alt="Medicine-1">
+                                        </div>
 
-                                <div class="card-item__infor--des">
-                                    <span class="card-item__infor--des__name">{{c.name}}</span>
-                                    <div class="card-item__infor--des__type">
-                                        Type:
-                                        <span>{{c.type}}</span>
+                                        <div class="card-item__infor--des">
+                                            <span class="card-item__infor--des__name">{{ c.name }}</span>
+                                            <div class="card-item__infor--des__type">
+                                                Type:
+                                                <span>{{ c.type }}</span>
+                                            </div>
+                                            <div class="card-item__infor--des__ingredient">
+                                                {{ c.des }}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-item__infor--des__ingredient">
-                                        {{c.des}}
+
+                                    <span class="card-item__price">{{ c.price }}</span>
+
+                                    <div class="card-item__quantity">
+                                        <!--                                <button class="plus-btn">-->
+                                        <!--                                    <i class="fa-solid fa-minus"></i>-->
+                                        <!--                                </button>-->
+                                        <!--                                <span>{{c.quantity}}</span>-->
+                                        <!--                                <button class="minus-btn">-->
+                                        <!--                                    <i class="fa-solid fa-plus"></i>-->
+                                        <!--                                </button>-->
+                                        <input type="number" onblur="updateCart({{ c.id }}, this)"
+                                               value="{{ c.quantity }}" class="form-control">
+                                    </div>
+
+                                    <div class="remove-btn">
+                                        <button onclick="deleteCart({{ c.id }})"><i class="fa-solid fa-trash"></i>
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <span class="card-item__price">{{c.price}}</span>
-
-                            <div class="card-item__quantity">
-<!--                                <button class="plus-btn">-->
-<!--                                    <i class="fa-solid fa-minus"></i>-->
-<!--                                </button>-->
-<!--                                <span>{{c.quantity}}</span>-->
-<!--                                <button class="minus-btn">-->
-<!--                                    <i class="fa-solid fa-plus"></i>-->
-<!--                                </button>-->
-                                <input type="number" onblur="updateCart({{ c.id }}, this)"
-                                    value="{{ c.quantity }}" class="form-control">
-                            </div>
-
-                            <div class="remove-btn">
-                                <button onclick="deleteCart({{c.id}})" ><i class="fa-solid fa-trash"></i></button>
-                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
                     {% endif %}
                 </div>
 
                 <div class="my-col-4">
                     <div class="money">
                         <div class="sl">
-                            <h3 >Count</h3>
+                            <h3>Count</h3>
                             <h3 class="quantity">{{ cart.total_quantity }}</h3>
                         </div>
                         <div class="money__total">

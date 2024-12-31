@@ -57,7 +57,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for examination in examination_stats%}
+                {% for examination in examination_stats %}
                     <tr>
                         <th>{{ loop.index }}</th>
                         <th>{{ examination.examination_date.strftime('%Y-%d') }}</th>
@@ -67,7 +67,8 @@
                     </tr>
                 {% endfor %}
                 <tr>
-                    <th colspan="5">Total revenue: {% if revenue_stats %}{{ revenue_stats[0].total_revenue }}{% endif %}</th>
+                    <th colspan="5">Total revenue:
+                        {% if revenue_stats %}{{ revenue_stats[0].total_revenue }}{% endif %}</th>
                 </tr>
                 </tbody>
             </table>
@@ -79,11 +80,13 @@
             <h2>Medicine Uses</h2>
             <div class=" d-flex justify-content-between">
                 <div class="statistic__month">
-                    <label>Month: <input class="choose__month" id="medicine_stats_month" name="medicine_stats_month" type="month" value="{{ default_date }}"></label>
+                    <label>Month: <input class="choose__month" id="medicine_stats_month" name="medicine_stats_month"
+                                         type="month" value="{{ default_date }}"></label>
                 </div>
                 <div class="statistic__month">
                     <form id="medicine-search-form">
-                        <label>Search: <input class="search__table" type="text" name="kw" placeholder="Enter medicine name..." required></label>
+                        <label>Search: <input class="search__table" type="text" name="kw"
+                                              placeholder="Enter medicine name..." required></label>
                         <button class="btn btn-primary rounded ms-2" type="submit">Search</button>
                     </form>
                 </div>

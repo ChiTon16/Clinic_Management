@@ -175,7 +175,7 @@ for (let i = 0; i < packages.length; i++) {
     })
 }
 
-function removeMedicineRow(removeBtn){
+function removeMedicineRow(removeBtn) {
     const medicineRow = removeBtn.closest('.medicine-row');
     medicineRow.remove()
     const medicineRows = document.getElementsByClassName('medicine-row')

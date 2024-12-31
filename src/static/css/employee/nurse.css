@@ -276,7 +276,7 @@ body {
 /* Table */
 .manage-title,
 .examination-title,
-.appointment-title{
+.appointment-title {
     font-size: 2.5rem;
     font-weight: 500;
     text-align: center;
@@ -421,12 +421,12 @@ input[type="date"] {
     justify-content: center;
 }
 
-form-appointment-content{
+form-appointment-content {
     position: relative;
     z-index: 2;
     width: 100%;
     margin-top: 100vh;
-    background-color:var(--white);
+    background-color: var(--white);
 }
 
 .form-appointment {
@@ -435,7 +435,7 @@ form-appointment-content{
     align-items: center;
 }
 
-.form-top{
+.form-top {
     max-width: 670px;
     margin-right: auto;
     margin-left: auto;
@@ -443,16 +443,16 @@ form-appointment-content{
     margin-bottom: 50px;
 }
 
-.form-appointment__title{
-   position: relative;
-   font-size: 2.5rem;
-   color: var(--sub-color);
-   font-weight:600;
-   text-align: center;
-   margin-bottom: 5px;
+.form-appointment__title {
+    position: relative;
+    font-size: 2.5rem;
+    color: var(--sub-color);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
-.form-appointment__line{
+.form-appointment__line {
     height: 2px;
     background-color: var(--sub-color);
     width: 56px;
@@ -460,7 +460,7 @@ form-appointment-content{
     margin-left: auto;
 }
 
-.form-appointment__des{
+.form-appointment__des {
     color: var(--black);
     mix-blend-mode: normal;
     font-weight: 300;
@@ -546,6 +546,6 @@ form-appointment-content{
     background-color: var(--sub-color);
 }
 
-.appointment-form{
+.appointment-form {
     display: none;
 }

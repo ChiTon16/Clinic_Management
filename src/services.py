@@ -1,6 +1,8 @@
 from urllib.parse import urlparse
+
+from flask_mail import Message
+
 from src import dao, app, mail
-from flask_mail import Message, Mail
 
 
 def is_safe_url(url, allowed_hosts):

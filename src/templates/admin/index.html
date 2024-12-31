@@ -183,7 +183,8 @@
     <div class="user-profile">
         <div class="logo">
             <img src="{{ current_user.avatar }}" alt="">
-            <h2>{% if current_user.is_authenticated %}{{ current_user.user.full_name }}{% else %}Anonymous{% endif %}</h2>
+            <h2>{% if current_user.is_authenticated %}{{ current_user.user.full_name }}{% else %}
+                Anonymous{% endif %}</h2>
             <p>{% if current_user.is_authenticated %}{{ current_user.role.name }}{% endif %}</p>
         </div>
     </div>

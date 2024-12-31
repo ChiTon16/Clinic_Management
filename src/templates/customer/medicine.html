@@ -4,7 +4,6 @@
 
 {% block css %}
     {{ super() }}
-{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout/banner.css') }}">#}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/customer/medicine.css') }}">
 {% endblock %}
@@ -118,36 +117,38 @@
 
                     <div class="card-list">
                         {% for medicine in medicines %}
-                        <div class="card-item">
-                            <div class="card-item__image">
-                                <img src="{{ medicine.image }}" alt="{{ medicine.medicine_name }}">
-                            </div>
+                            <div class="card-item">
+                                <div class="card-item__image">
+                                    <img src="{{ medicine.image }}" alt="{{ medicine.medicine_name }}">
+                                </div>
 
-                            <div class="card-item__type-medicine">
-                                <span>{{ medicine.medicine_type.type_of_medicine }}</span>
-                            </div>
+                                <div class="card-item__type-medicine">
+                                    <span>{{ medicine.medicine_type.type_of_medicine }}</span>
+                                </div>
 
-                            <div class="card-item__name">
-                                <span>{{ medicine.medicine_name }}</span>
-                            </div>
+                                <div class="card-item__name">
+                                    <span>{{ medicine.medicine_name }}</span>
+                                </div>
 
-                            <div class="card-item__price">{{ "{:,.0f}".format(medicine.price) }} VNĐ</div>
+                                <div class="card-item__price">{{ "{:,.0f}".format(medicine.price) }} VNĐ</div>
 
-                            <div class="card-item__type">
-                                Type:
-                                <span>{{ medicine.medicine_unit.unit_name }}</span>
-                            </div>
+                                <div class="card-item__type">
+                                    Type:
+                                    <span>{{ medicine.medicine_unit.unit_name }}</span>
+                                </div>
 
-                            <div class="card-item__ingredient">
-                                Ingredient:
-                                <span>{{ medicine.description }}</span>
-                            </div>
+                                <div class="card-item__ingredient">
+                                    Ingredient:
+                                    <span>{{ medicine.description }}</span>
+                                </div>
 
-                            <div class="card-item__btn">
-                                <button onclick="addToCart({{medicine.id}}, '{{medicine.medicine_name}}', '{{medicine.medicine_type.type_of_medicine}}',
-                                '{{medicine.image}}', '{{medicine.description}}', {{medicine.price}})">Add to cart</button>
+                                <div class="card-item__btn">
+                                    <button onclick="addToCart({{ medicine.id }}, '{{ medicine.medicine_name }}', '{{ medicine.medicine_type.type_of_medicine }}',
+                                            '{{ medicine.image }}', '{{ medicine.description }}', {{ medicine.price }})">
+                                        Add to cart
+                                    </button>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                     </div>
 
@@ -157,7 +158,7 @@
                             <i class="fa-solid fa-arrow-left"></i>
                         </button>
 
-                         <button>
+                        <button>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>

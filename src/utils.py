@@ -1,5 +1,5 @@
 def cart_stats(cart):
-    total_amount, total_quantity = 0 ,0
+    total_amount, total_quantity = 0, 0
 
     if cart:
         for c in cart.values():

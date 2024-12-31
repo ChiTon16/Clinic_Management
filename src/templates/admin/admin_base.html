@@ -115,7 +115,8 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>{% if current_user.is_authenticated %}{{ current_user.user.full_name }}{% else %}Anonymous{% endif %}</b></p>
+                        <p>Hey, <b>{% if current_user.is_authenticated %}{{ current_user.user.full_name }}{% else %}
+                            Anonymous{% endif %}</b></p>
                     </div>
                 </div>
             </div>

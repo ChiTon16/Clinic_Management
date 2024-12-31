@@ -11,7 +11,6 @@ from src.models import Account, User, Patient, Employee, Administrator, Cashier,
 def authenticate(username, password):
     if username and password:
         password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
-        print(password)
 
         return Account.query.filter(Account.username.__eq__(username.strip()),
                                     Account.password.__eq__(password)).first()

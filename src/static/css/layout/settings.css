@@ -3,12 +3,12 @@ a {
 }
 
 .container {
-    padding-top: 76px;
+    padding: 10px;
 }
 
 .container__title {
     text-align: center;
-    color: var(--sub-color);
+    color: var(--bs-black);
 }
 
 .form__container {
@@ -35,5 +35,5 @@ a {
 }
 
 .form-settings__btn:hover {
-    background-color: var(--blue);
+    background-color: var(--bs-black);
 }

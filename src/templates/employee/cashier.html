@@ -20,11 +20,16 @@
             <div class="logo-name">F & H</div>
         </a>
         <ul class="side-menu">
-            <li class="active" id="bill-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-newspaper"></i>Manage</a></li>
-            <li id="manage-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-bars-progress"></i>Create bill</a></li>
-            <li><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a></li>
-            <li><a href="{{ url_for('account_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-gear"></i>Settings</a></li>
-            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            <li class="active" id="bill-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-newspaper"></i>Manage</a>
+            </li>
+            <li id="manage-btn"><a href="javascript:void(0)"><i class="bx fa-solid fa-bars-progress"></i>Create bill</a>
+            </li>
+            <li><a href="{{ url_for('profile_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-user"></i>Profile</a>
+            </li>
+            <li><a href="{{ url_for('account_settings', slug=current_user.slug) }}"><i class="bx fa-solid fa-gear"></i>Settings</a>
+            </li>
+            <li><a href="{{ url_for('signout') }}" class="logout"><i class="bx fa-solid fa-right-from-bracket"></i>Logout</a>
+            </li>
         </ul>
     </div>
     <!-- End of Sidebar -->
@@ -41,7 +46,8 @@
             </form>
 
             <a href="javascript:void(0)" class="profile" style="display: flex; align-items: center">
-                <img src="{{ current_user.avatar }}" alt="Avatar" style="margin-right: 8px">{{ current_user.user.full_name }}
+                <img src="{{ current_user.avatar }}" alt="Avatar"
+                     style="margin-right: 8px">{{ current_user.user.full_name }}
             </a>
         </nav>
         <!-- End of Navbar -->
@@ -114,10 +120,14 @@
                             <td id="medical_bill_examination_date_{{ loop.index0 }}">{{ medical_bill.examination_date.strftime('%Y-%m-%d') }}</td>
                             <td>{{ medical_bill.created_date.strftime('%Y-%m-%d') }}</td>
                             <td>{{ medical_bill.packages.packages_name }}</td>
-                            <input type="hidden" value="{{ medical_bill.patient.user.full_name }}" id="medical_bill_full_name_{{ loop.index0 }}"/>
-                            <input type="hidden" value="{{ medical_bill.symptoms }}" id="medical_bill_symptoms_{{ loop.index0 }}"/>
-                            <input type="hidden" value="{{ medical_bill.diagnostic }}" id="medical_bill_diagnostic_{{ loop.index0 }}"/>
-                            <input type="hidden" value="{{ medical_bill.patient.id }}" id="medical_bill_patient_{{ loop.index0 }}"/>
+                            <input type="hidden" value="{{ medical_bill.patient.user.full_name }}"
+                                   id="medical_bill_full_name_{{ loop.index0 }}"/>
+                            <input type="hidden" value="{{ medical_bill.symptoms }}"
+                                   id="medical_bill_symptoms_{{ loop.index0 }}"/>
+                            <input type="hidden" value="{{ medical_bill.diagnostic }}"
+                                   id="medical_bill_diagnostic_{{ loop.index0 }}"/>
+                            <input type="hidden" value="{{ medical_bill.patient.id }}"
+                                   id="medical_bill_patient_{{ loop.index0 }}"/>
                             <td>
                                 <!-- Red: critical-low -->
                                 <!-- Green: positive-medium -->

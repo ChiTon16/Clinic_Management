@@ -1,23 +1,22 @@
 import os
-import cloudinary
 
+import cloudinary
 from dotenv import load_dotenv
 from flask import Flask
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer
-import cloudinary
 from payos import PayOS
 
 app = Flask(__name__)
 
 load_dotenv()
 
-payOS = PayOS( client_id=os.environ.get('PAYOS_CLIENT_ID'),
-			   api_key=os.environ.get('PAYOS_API_KEY'),
-			   checksum_key=os.environ.get('PAYOS_CHECKSUM_KEY')
-			   )
+payOS = PayOS(client_id=os.environ.get('PAYOS_CLIENT_ID'),
+              api_key=os.environ.get('PAYOS_API_KEY'),
+              checksum_key=os.environ.get('PAYOS_CHECKSUM_KEY')
+              )
 
 app.config['SECRET_KEY'] = '1HV98N4L#&UNg?:E;82{Ef@Bftfpl9eC#DtTP~oJ"Pufpi|V)2&}_aqM/g?Pbp2'
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://root:admin123@localhost/clinic?charset=utf8mb4"
@@ -45,7 +44,7 @@ login = LoginManager(app=app)
 mail = Mail(app)
 
 cloudinary.config(
-	cloud_name="duwdx2tgu",
-	api_key="646743949231237",
-	api_secret="jbac0w3FuckWA57tHsMH45ljksA"
+    cloud_name="duwdx2tgu",
+    api_key="646743949231237",
+    api_secret="jbac0w3FuckWA57tHsMH45ljksA"
 )

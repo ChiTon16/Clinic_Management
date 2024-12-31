@@ -1,13 +1,13 @@
 from datetime import datetime
 
-from flask import request
 from flask_admin import AdminIndexView, expose, Admin, BaseView
 from flask_admin.contrib.sqla import ModelView
 from flask_login import current_user
 
-from src import services
 from src import app, db
-from src.models import (AccountRoleEnum, Account, User, Regulation, ExaminationList, Medicine, MedicineType, MedicineUnit,
+from src import services
+from src.models import (AccountRoleEnum, Account, User, Regulation, ExaminationList, Medicine, MedicineType,
+                        MedicineUnit,
                         Packages)
 
 
@@ -35,6 +35,7 @@ class AuthenticatedAdmin(ModelView):
 
     def is_accessible(self):
         return current_user.is_authenticated and current_user.role == AccountRoleEnum.ADMIN
+
 
 class MyAnalyticsView(BaseView):
     @expose("/")
@@ -107,7 +108,7 @@ class PackagesView(AuthenticatedAdmin):
     column_filters = ['price']
 
 
-admin = Admin(app=app, name="abc",template_mode='bootstrap4', index_view=MyAdminView())
+admin = Admin(app=app, name="Admin", template_mode='bootstrap4', index_view=MyAdminView())
 
 admin.add_view(MyAnalyticsView(name='Analytics', url='/admin/analytics', endpoint='analytics'))
 admin.add_view(AccountView(Account, db.session))

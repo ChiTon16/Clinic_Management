@@ -217,7 +217,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    color: #757575;
+    color: #111111;
     margin: 0;
     line-height: 24px;
     font-weight: 400;
@@ -245,7 +245,6 @@ pre {
     background: #eee;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
-    font-size: 0.9375rem;
     line-height: 1.6;
     margin-bottom: 1.6em;
     max-width: 100%;
@@ -256,7 +255,6 @@ pre {
 code, kbd, tt, var {
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
-    font-size: 0.9375rem;
 }
 
 abbr, acronym {
@@ -298,7 +296,6 @@ Preloader Area CSS
 .preloader {
     position: fixed;
     left: 0;
-    width: 0;
     height: 100%;
     width: 100%;
     text-align: center;
@@ -486,7 +483,6 @@ Preloader Area CSS
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
     border: none;
-    border-radius: 0;
     border-radius: 4px;
 }
 
@@ -566,7 +562,7 @@ Preloader Area CSS
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    padding: 120px 0px;
+    padding: 120px 0;
 }
 
 .breadcrumbs .bread-inner {
@@ -765,10 +761,10 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-    color: #666;
-    border: 1px solid #ccc;
+    color: black;
+    border: 0.5px solid darkgray;
     border-radius: 3px;
-    padding: 3px;
+    padding: 8px;
     font-weight: 400;
 }
 
@@ -811,7 +807,7 @@ a {
 }
 
 a:visited {
-    color: inherit;
+    color: black;
 }
 
 a:hover, a:focus, a:active {
@@ -893,8 +889,8 @@ a:hover, a:active {
     }
 }
 
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
+.site-main .comment-navigation,
+.posts-navigation, .site-main,
 .post-navigation {
     margin: 0 0 1.5em;
     overflow: hidden;
@@ -941,7 +937,6 @@ a:hover, a:active {
     color: #21759b;
     display: block;
     font-size: 14px;
-    font-size: 0.875rem;
     font-weight: bold;
     height: auto;
     left: 5px;

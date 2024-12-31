@@ -43,9 +43,9 @@ app.add_url_rule('/user/account-settings/<slug>',
 app.add_url_rule('/user/profile-settings/<slug>',
                  'profile_settings',
                  views.profile_settings, methods=['GET', 'POST'])
-#--------------------------------------------------------------------------#
+# --------------------------------------------------------------------------#
 
-#---- Employee ----#
+# ---- Employee ----#
 app.add_url_rule('/employee/account-settings/<slug>', 'account_settings', views.account_settings,
                  methods=['GET', 'POST'])
 app.add_url_rule('/employee/profile-settings/<slug>', 'profile_settings', views.profile_settings,
@@ -57,15 +57,15 @@ app.add_url_rule('/employee/doctor', 'employee_doctor', views.employee_doctor, m
 app.add_url_rule('/employee/cashier', 'employee_cashier', views.employee_cashier, methods=['GET', 'POST'])
 app.add_url_rule('/admin', 'admin', views.admin_login, methods=['GET', 'POST'])
 app.add_url_rule('/admin/medicine/new', 'admin_medicine_new', views.create_medicine, methods=['POST'])
-#--------------------------------------------------------------------------#
+# --------------------------------------------------------------------------#
 
-#---- MAIL ----#
+# ---- MAIL ----#
 app.add_url_rule('/mail/confirm/<token>', 'confirm_email', views.confirm_email)
 app.add_url_rule('/mail/resend', 'resend_confirmation', views.resend_confirmation)
 app.add_url_rule('/mail/password-reset/<token>', 'password_reset', views.password_reset)
-#--------------------------------------------------------------------------#
+# --------------------------------------------------------------------------#
 
-#---- API ----#
+# ---- API ----#
 app.add_url_rule('/api/employee/doctor/load-packages',
                  'load_packages',
                  fetcher.load_packages_list,
@@ -113,7 +113,5 @@ app.add_url_rule(
     methods=['POST']
 )
 
-
 if __name__ == '__main__':
-    from src import admin
     app.run(debug=True)

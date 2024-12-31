@@ -265,11 +265,14 @@ input[type="date"] {
     color: blue;
     border-color: blue;
 }
-.p{
+
+.p {
     text-decoration-color: black;
 }
+
 .panels-container {
     position: absolute;
+    color: black;
     height: 100%;
     width: 100%;
     top: 0;
@@ -304,7 +307,7 @@ input[type="date"] {
 }
 
 .panel .content {
-    color: #fff;
+    color: black;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.6s;
 }
@@ -415,7 +418,7 @@ input[type="date"] {
 
 .forgot-password-form--des {
     font-size: 1.1rem;
-    color: var(--gray);
+    color: var(--bs-black);
     margin-bottom: 20px;
 }
 

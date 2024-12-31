@@ -1,28 +1,33 @@
-.url{
-    padding-right:0;
+.url {
+    padding-right: 0;
     flex: 0 0 auto;
     width: 46%;
 }
-.url__name{
+
+.url__name {
     padding-left: 0;
     width: 54%;
 }
-.url input{
+
+.url input {
     border-radius: 0.375rem 0 0 0.375rem;
-    padding-right:0;
+    padding-right: 0;
     border-right: none;
 }
-.url__name input{
+
+.url__name input {
     border-radius: 0 0.375rem 0.375rem 0;
-    padding-left:0;
-    border-left:none;
+    padding-left: 0;
+    border-left: none;
 }
-.url > .form-control:focus{
-    border-color:#dee2e6;
+
+.url > .form-control:focus {
+    border-color: #dee2e6;
     box-shadow: none;
 }
-.url__name > .form-control:focus{
-    border-color:#dee2e6;
-    box-shadow:none;
+
+.url__name > .form-control:focus {
+    border-color: #dee2e6;
+    box-shadow: none;
 }
 

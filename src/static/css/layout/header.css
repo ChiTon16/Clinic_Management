@@ -69,13 +69,13 @@ header {
     transition: all 0.1s ease;
 }
 
-.nav__menu li a:hover{
+.nav__menu li a:hover {
     background-color: var(--white);
     color: var(--cyan);
     border-radius: 50px;
 }
 
-.my-nav.active .nav__menu li a:hover{
+.my-nav.active .nav__menu li a:hover {
     background-color: var(--blue);
     color: var(--white);
     border-radius: 50px;
@@ -87,18 +87,18 @@ header {
 }
 
 /* Avatar */
-.avatar{
+.avatar {
     display: flex;
     align-items: center;
     margin-left: 5px;
     position: relative;
 }
 
-.avatar:hover .avatar__des{
+.avatar:hover .avatar__des {
     display: block;
 }
 
-.avatar__des{
+.avatar__des {
     position: absolute;
     top: 60px;
     left: -12px;
@@ -109,25 +109,25 @@ header {
     display: none;
 }
 
-.avatar__des .avatar__des--btn{
-    color: var(--cyan);
+.avatar__des .avatar__des--btn {
+    color: var(--bs-black);
     display: block;
     transition: all 0.1s ease;
     font-size: 1rem;
     margin: 10px 0;
 }
 
-.avatar__des .avatar__des--btn i{
+.avatar__des .avatar__des--btn i {
     margin-right: 1.9px;
 }
 
-.avatar__des .avatar__des--btn:hover{
-    color: var(--white) !important;
+.avatar__des .avatar__des--btn:hover {
+    color: var(--primary) !important;
     border-radius: 50px;
-    background-color: var(--blue)!important;
+    transform: perspective(1px);
 }
 
-.avatar__image{
+.avatar__image {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -135,18 +135,18 @@ header {
     overflow: hidden;
 }
 
-.avatar__image img{
+.avatar__image img {
     object-fit: cover;
 }
 
-.avatar-name{
+.avatar-name {
     font-size: 1.2rem;
     margin-left: 10px;
     margin-bottom: 0;
-    color: var(--white);
+    color: var(--bs-black);
     font-weight: 600;
 }
 
-.my-nav.active .nav__menu .avatar .avatar-name{
-    color: var(--cyan);
+.my-nav.active .nav__menu .avatar .avatar-name {
+    color: var(--blue);
 }

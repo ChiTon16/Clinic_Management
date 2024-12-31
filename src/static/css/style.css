@@ -57,16 +57,16 @@ body {
 
 /* SCROLLBAR */
 ::-webkit-scrollbar {
-   width: 8px;
-   background: #424d78;
+    width: 8px;
+    background: #424d78;
 }
 
 ::-webkit-scrollbar-thumb {
-   background: linear-gradient(-45deg, #5ebbff 0%, #a174ff 100%);
+    background: linear-gradient(-45deg, #5ebbff 0%, #a174ff 100%);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-   background: linear-gradient(-45deg, #4a99d2 0%, #8a5fe5 100%);
+    background: linear-gradient(-45deg, #4a99d2 0%, #8a5fe5 100%);
 }
 
 #scrollUp {

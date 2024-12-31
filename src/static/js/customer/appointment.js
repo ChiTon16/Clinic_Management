@@ -42,7 +42,7 @@ appointmentForm.addEventListener('submit', (e) => {
         .catch(error => {
             console.log(error)
         })
-        // .finally(() => {
-        //     hidePreLoading()
-        // })
+    // .finally(() => {
+    //     hidePreLoading()
+    // })
 })
