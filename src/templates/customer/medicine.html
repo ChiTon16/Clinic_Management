@@ -35,8 +35,8 @@
                             </div>
 
                             <div class="filter-value">
-                                <button>Ascending</button>
-                                <button>Decrease</button>
+                                <button onclick="filterByPrice('asc')">Ascending</button>
+                                <button onclick="filterByPrice('desc')">Decrease</button>
                             </div>
                         </div>
 
@@ -51,22 +51,7 @@
 
                             <div class="filter-value">
                                 <div class="messageBox">
-                                    <input required="" placeholder="Type medicine" type="text" class="messageInput"/>
-                                    <button class="sendButton">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-                                            <path
-                                                    fill="none"
-                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                            ></path>
-                                            <path
-                                                    stroke-linejoin="round"
-                                                    stroke-linecap="round"
-                                                    stroke-width="33.67"
-                                                    stroke="#6c6c6c"
-                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                            ></path>
-                                        </svg>
-                                    </button>
+                                    <input required="" placeholder="Type medicine" type="text" class="messageInput" id="type-medicine" oninput="filterByType()"/>
                                 </div>
 
                             </div>
@@ -83,22 +68,7 @@
 
                             <div class="filter-value">
                                 <div class="messageBox">
-                                    <input required="" placeholder="Name medicine" type="text" class="messageInput"/>
-                                    <button class="sendButton">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-                                            <path
-                                                    fill="none"
-                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                            ></path>
-                                            <path
-                                                    stroke-linejoin="round"
-                                                    stroke-linecap="round"
-                                                    stroke-width="33.67"
-                                                    stroke="#6c6c6c"
-                                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-                                            ></path>
-                                        </svg>
-                                    </button>
+                                    <input required="" placeholder="Name medicine" type="text" id="name-medicine" class="messageInput" oninput="filterByName()"/>
                                 </div>
 
                             </div>

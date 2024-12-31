@@ -37,7 +37,7 @@ class Account(BaseModel, UserMixin):
     is_confirmed = Column(Boolean, nullable=False, default=False)
     confirmed_on = Column(DateTime, nullable=True)
     avatar = Column(String(255),
-                    default='https://res.cloudinary.com/duwdx2tgu/image/upload/v1733325306/user_ywoe4x.jpg')
+                    default='https://res.cloudinary.com/duwdx2tgu/image/upload/v1735629434/doctor_umep2s.png')
     role = Column(Enum(AccountRoleEnum), default=AccountRoleEnum.PATIENT, nullable=False)
 
     user = relationship('User', backref='account', lazy=True, uselist=False)

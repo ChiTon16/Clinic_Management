@@ -1,4 +1,4 @@
-//Table choosing in analytics.html
+    //Table choosing in analytics.html
 const salesBtn = document.querySelector(".salesBtn");
 const medicineBtn = document.querySelector(".medicineBtn");
 const salesChart = document.querySelector(".sales__chart");
