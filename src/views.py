@@ -430,22 +430,20 @@ def resend_confirmation():
 
 # -------------------- PAYMENT -------------------- #
 def pay():
-    # session['cart'] = {
-    #     "1": {
-    #         "id": "1",
-    #         "name": "Ma Tuy",
-    #         "type": "vien",
-    #         "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305020/xrjcurzker9wxgyi4r49.jpg",
-    #         "des": "goat",
-    #         "price": 5555555,
-    #         "quantity": 0
-    #     },
-    # }
+    """
     session['cart'] = {
-
+        "1": {
+            "id": "1",
+            "name": "Ma Tuy",
+            "type": "vien",
+            "image": "https://res.cloudinary.com/duwdx2tgu/image/upload/v1735305020/xrjcurzker9wxgyi4r49.jpg",
+            "des": "goat",
+            "price": 5555555,
+            "quantity": 0
+        },
     }
-    key = app.config['CART_KEY']  # 'cart'
-    cart = session[key] if key in session else {}
+    """
+
     return render_template(template_name_or_list='pay.html')
 
 
