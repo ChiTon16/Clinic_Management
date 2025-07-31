@@ -8,5 +8,6 @@
 
 ```bash
 git clone https://github.com/HiepThanhTran/ClinicEase-Website.git
+```
 
-Create a virtual environment
+### Create a virtual environment
