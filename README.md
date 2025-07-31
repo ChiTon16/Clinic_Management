@@ -1,4 +1,4 @@
-#HomePage
+# **HomePage**
 <img width="1919" height="1015" alt="image" src="https://github.com/user-attachments/assets/37eba1e7-d573-4b20-a5b1-260ebcc853ae" />
 #LoginPage
 <img width="1901" height="1015" alt="image" src="https://github.com/user-attachments/assets/a73b579b-cdc3-4356-8c40-9261096d2fcd" />
